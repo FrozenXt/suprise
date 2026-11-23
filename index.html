@@ -1,0 +1,1790 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>For Sangeetha ♡</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --night: #141a4d;
+        --sky: #2b3a8f;
+        --blue: #5b7bff;
+        --mist: #eef0ff;
+        --paper: #fbfbff;
+        --ink: #27306b;
+        --rose: #ff8fb1;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: Nunito, sans-serif;
+        color: var(--ink);
+        background: var(--mist);
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      .hand {
+        font-family: Caveat, cursive;
+        font-weight: 700;
+      }
+      h2 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      section {
+        padding: 4.5rem 1.2rem;
+        max-width: 1100px;
+        margin: auto;
+      }
+      #fx {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        gap: 1.4rem;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 0.8rem 1.4rem;
+        background: rgba(20, 26, 77, 0.55);
+        backdrop-filter: blur(8px);
+      }
+      nav b {
+        margin-right: auto;
+        font-family: Caveat;
+        font-size: 1.6rem;
+        color: #fff;
+      }
+      nav a {
+        color: #dfe5ff;
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      nav a:hover {
+        color: #fff;
+      }
+      #hero {
+        max-width: none;
+        min-height: 100vh;
+        padding: 7rem 1.5rem 12rem;
+        background: linear-gradient(#141a4d, #2b3a8f 60%, #7e92e8);
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+      }
+      #hero .in {
+        max-width: 1100px;
+        margin: auto;
+        position: relative;
+        z-index: 3;
+      }
+      #hero h1 {
+        font-size: clamp(2rem, 5.5vw, 3.6rem);
+        line-height: 1.25;
+        max-width: 560px;
+        font-weight: 500;
+      }
+      #hero h1 em {
+        color: #a9bbff;
+      }
+      .moon {
+        position: absolute;
+        right: 12%;
+        top: 12%;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        background: #fff8e6;
+        box-shadow: 0 0 60px 20px rgba(255, 248, 230, 0.45);
+        animation: glow 5s ease-in-out infinite;
+      }
+      @keyframes glow {
+        50% {
+          box-shadow: 0 0 90px 34px rgba(255, 248, 230, 0.6);
+        }
+      }
+      .mount {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+      }
+      .couple {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 4rem;
+        z-index: 3;
+        animation: bob 4s ease-in-out infinite;
+      }
+      @keyframes bob {
+        50% {
+          transform: translate(-50%, -8px);
+        }
+      }
+      .days {
+        margin-top: 1.6rem;
+        font-size: 0.95rem;
+        color: #cdd7ff;
+      }
+      #player {
+        margin-top: 2rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.9rem;
+        background: rgba(255, 255, 255, 0.14);
+        padding: 0.8rem 1.2rem;
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+      }
+      #play {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 0;
+        background: #fff;
+        color: var(--sky);
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+      .card,
+      .fav,
+      .slide,
+      .note {
+        background: var(--paper);
+        border-radius: 14px;
+        box-shadow: 0 8px 26px rgba(43, 58, 143, 0.14);
+      }
+      .photo {
+        position: relative;
+        background: #fff;
+        padding: 10px 10px 38px;
+        border-radius: 6px;
+        box-shadow: 0 10px 28px rgba(43, 58, 143, 0.22);
+        transform: rotate(var(--r, -2deg));
+        transition: transform 0.3s;
+      }
+      .photo:hover {
+        transform: rotate(0) scale(1.04);
+      }
+      .photo figure {
+        aspect-ratio: 4/3;
+        background: linear-gradient(135deg, #dfe5ff, #c3cfff);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 3px;
+      }
+      .photo figure::before {
+        content: "♡";
+        font-size: 2.4rem;
+        color: #8fa3ff;
+        position: absolute;
+      }
+      .photo img {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .photo figcaption,
+      .photo .cap {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: Caveat;
+        font-size: 1.3rem;
+      }
+      .favs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.2rem;
+      }
+      .fav {
+        padding: 1rem;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .fav:hover {
+        transform: translateY(-8px) rotate(-2deg);
+      }
+      .fav .photo {
+        --r: 0;
+        padding: 6px;
+        box-shadow: none;
+      }
+      .fav .photo figure {
+        aspect-ratio: 1;
+      }
+      .fav h3 {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+      }
+      .fav small {
+        display: block;
+        opacity: 0.75;
+      }
+      .praise {
+        max-width: 640px;
+        margin: 2rem auto 0;
+        text-align: center;
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+      .praise .hand {
+        font-size: 1.7rem;
+        color: var(--blue);
+      }
+      .cat {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-top: 1rem;
+        cursor: pointer;
+        user-select: none;
+      }
+      .cat:active {
+        animation: wig 0.4s;
+      }
+      @keyframes wig {
+        25% {
+          transform: rotate(-12deg);
+        }
+        75% {
+          transform: rotate(12deg);
+        }
+      }
+      .bubble {
+        font-family: Caveat;
+        font-size: 1.5rem;
+        text-align: center;
+        min-height: 2rem;
+        color: var(--blue);
+      }
+      .himal {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .himal blockquote {
+        font-family: Caveat;
+        font-size: 1.9rem;
+        line-height: 1.4;
+      }
+      .line {
+        display: flex;
+        gap: 1.4rem;
+        overflow-x: auto;
+        padding: 1.4rem 0.5rem;
+        scroll-snap-type: x mandatory;
+      }
+      .step {
+        flex: 0 0 220px;
+        scroll-snap-align: center;
+        text-align: center;
+      }
+      .step p {
+        margin-top: 0.8rem;
+        font-size: 0.92rem;
+      }
+      .step .hand {
+        font-size: 1.25rem;
+        color: var(--blue);
+      }
+      .route {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 2.5rem;
+      }
+      .route .photo {
+        flex: 0 0 28%;
+      }
+      .path {
+        flex: 1;
+        position: relative;
+        height: 60px;
+        border-top: 3px dotted #8fa3ff;
+        margin-top: -20px;
+      }
+      .path span {
+        position: absolute;
+        top: -17px;
+        left: 0;
+        font-size: 1.6rem;
+        animation: fly 4.5s ease-in-out infinite;
+      }
+      @keyframes fly {
+        to {
+          left: calc(100% - 1.6rem);
+        }
+      }
+      .trek {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .trek p {
+        font-family: Caveat;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
+      .hl {
+        display: inline-block;
+        background: #c9d4ff;
+        padding: 0.3rem 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+      #story {
+        text-align: center;
+      }
+      .slide {
+        padding: 2.4rem 1.6rem;
+        max-width: 560px;
+        margin: auto;
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.7rem;
+      }
+      .slide .hand {
+        font-size: 2.1rem;
+        color: var(--blue);
+      }
+      .slide.swap {
+        animation: pop 0.5s;
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+      }
+      .btn {
+        margin-top: 1.2rem;
+        border: 0;
+        border-radius: 30px;
+        background: var(--blue);
+        color: #fff;
+        padding: 0.8rem 1.8rem;
+        font: 600 1rem Nunito;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(91, 123, 255, 0.4);
+        transition: 0.2s;
+      }
+      .btn:hover {
+        transform: scale(1.06);
+      }
+      .dots {
+        margin-top: 0.8rem;
+        color: #8fa3ff;
+        letter-spacing: 0.3rem;
+      }
+      .note {
+        max-width: 340px;
+        margin: 2rem auto 0;
+        padding: 1.2rem 1.6rem;
+        transform: rotate(2deg);
+      }
+      .note li {
+        list-style: none;
+        padding: 0.35rem 0;
+        cursor: pointer;
+        font-family: Caveat;
+        font-size: 1.5rem;
+      }
+      .note li::before {
+        content: "☐ ";
+        color: var(--blue);
+      }
+      .note li.on::before {
+        content: "✔ ";
+      }
+      .note li.on {
+        text-decoration: underline wavy var(--rose);
+      }
+      .gal {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 1.4rem;
+      }
+      .gal .photo:nth-child(even) {
+        --r: 2.5deg;
+      }
+      #end {
+        max-width: none;
+        background: linear-gradient(#eef0ff, #9fb2ff 70%, #4a5fc7);
+        text-align: center;
+        padding-bottom: 6rem;
+      }
+      #end p {
+        font-family: Caveat;
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        line-height: 1.5;
+        max-width: 640px;
+        margin: auto;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+        place-items: center;
+        background: rgba(20, 26, 77, 0.7);
+        padding: 1rem;
+      }
+      .modal.show {
+        display: grid;
+      }
+      .modal .card {
+        max-width: 520px;
+        padding: 2rem;
+        text-align: center;
+        font-family: Caveat;
+        font-size: 1.6rem;
+        line-height: 1.5;
+        animation: pop 0.5s;
+      }
+      .modal img {
+        max-width: 92vw;
+        max-height: 88vh;
+        border-radius: 8px;
+      }
+
+      .star {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #fff;
+        animation: tw 3s ease-in-out infinite;
+        z-index: 1;
+      }
+      @keyframes tw {
+        50% {
+          opacity: 0.15;
+          transform: scale(1.8);
+        }
+      }
+      .shoot {
+        position: absolute;
+        top: 8%;
+        left: -10%;
+        width: 120px;
+        height: 2px;
+        background: linear-gradient(90deg, #fff, transparent);
+        transform: rotate(25deg);
+        animation: sh 7s linear infinite;
+        z-index: 1;
+      }
+      @keyframes sh {
+        0% {
+          left: -10%;
+          top: 5%;
+          opacity: 1;
+        }
+        12% {
+          left: 70%;
+          top: 40%;
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        justify-content: center;
+      }
+      .chip {
+        border: 0;
+        background: var(--paper);
+        color: var(--ink);
+        padding: 0.7rem 1.2rem;
+        border-radius: 30px;
+        font: 600 1rem Nunito;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(43, 58, 143, 0.15);
+        transition: 0.25s;
+      }
+      .chip:hover {
+        background: var(--blue);
+        color: #fff;
+        transform: translateY(-4px) scale(1.06);
+      }
+      .big {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .big figure {
+        aspect-ratio: 4/5;
+      }
+      .gift {
+        position: absolute;
+        inset: 10px 10px 38px;
+        display: grid;
+        place-items: center;
+        font-size: 5rem;
+        background: linear-gradient(135deg, #c3cfff, #e6d9ff);
+        z-index: 2;
+        border-radius: 3px;
+        animation: bob2 2s ease-in-out infinite;
+      }
+      @keyframes bob2 {
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      .opts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        justify-content: center;
+        margin: 1.2rem 0;
+      }
+      #when {
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+        border: 2px solid #8fa3ff;
+        font: 600 1rem Nunito;
+        color: var(--ink);
+      }
+      #promise {
+        margin-top: 1.4rem;
+        font-family: Caveat;
+        font-size: 1.8rem;
+        min-height: 2rem;
+      }
+      .couple-img {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(680px, 94%);
+        z-index: 3;
+        -webkit-mask-image: radial-gradient(
+          ellipse at 50% 55%,
+          #000 50%,
+          transparent 75%
+        );
+        mask-image: radial-gradient(
+          ellipse at 50% 55%,
+          #000 50%,
+          transparent 75%
+        );
+        animation: bob 6s ease-in-out infinite;
+      }
+      .fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 110px;
+        background: linear-gradient(transparent, #eef0ff);
+        z-index: 4;
+      }
+      #hero {
+        min-height: 110vh;
+      }
+
+      #bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, #8fa3ff, #ff8fb1);
+        z-index: 60;
+      }
+      .line-in {
+        display: block;
+        opacity: 0;
+        transform: translateY(24px);
+        filter: blur(6px);
+        animation: li 0.9s forwards;
+      }
+      @keyframes li {
+        to {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      }
+      h2 {
+        background: linear-gradient(90deg, #27306b, #5b7bff, #ff8fb1, #27306b);
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shim 8s linear infinite;
+      }
+      #hero h2,
+      #end h2 {
+        color: inherit;
+      }
+      @keyframes shim {
+        to {
+          background-position: 300% 0;
+        }
+      }
+      .moon,
+      .couple-img {
+        will-change: transform;
+      }
+      .roam {
+        position: fixed;
+        bottom: 4px;
+        left: -120px;
+        z-index: 40;
+        font-size: 2.6rem;
+        cursor: pointer;
+        animation: walk var(--t, 30s) linear var(--dl, 0s) infinite;
+      }
+      .roam .c {
+        display: inline-block;
+        animation: step 0.5s ease-in-out infinite;
+      }
+      .roam img {
+        height: 64px;
+        display: block;
+      }
+      .roam.rev {
+        animation-name: walkr;
+      }
+      .roam.rev .c {
+        transform: scaleX(-1);
+      }
+      @keyframes walk {
+        to {
+          transform: translateX(calc(100vw + 240px));
+        }
+      }
+      @keyframes walkr {
+        from {
+          transform: translateX(calc(100vw + 240px));
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+      .roam.rev {
+        left: -120px;
+      }
+      @keyframes step {
+        50% {
+          transform: translateY(-7px) rotate(4deg);
+        }
+      }
+      .roam.hop .c {
+        animation: hop 1.6s ease-in-out infinite;
+      }
+      @keyframes hop {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-40px) rotate(-10deg);
+        }
+      }
+      .peek {
+        position: absolute;
+        right: 6%;
+        bottom: -6px;
+        font-size: 3.2rem;
+        animation: peek 4s ease-in-out infinite;
+      }
+      @keyframes peek {
+        0%,
+        100% {
+          transform: translateY(30px);
+        }
+        40%,
+        60% {
+          transform: translateY(0);
+        }
+      }
+      .meow {
+        position: fixed;
+        z-index: 70;
+        font-family: Caveat;
+        font-size: 1.5rem;
+        background: #fff;
+        color: var(--blue);
+        padding: 0.2rem 0.8rem;
+        border-radius: 14px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        pointer-events: none;
+        animation: pop 0.4s;
+      }
+      #wa {
+        display: inline-block;
+        margin-top: 0.8rem;
+        font: 600 1rem Nunito;
+        color: #fff;
+        background: #25d366;
+        padding: 0.6rem 1.2rem;
+        border-radius: 30px;
+        text-decoration: none;
+      }
+      @media (max-width: 900px) {
+        section {
+          padding: 3.5rem 1rem;
+        }
+        .route .photo {
+          flex-basis: 32%;
+        }
+        .step {
+          flex-basis: 190px;
+        }
+      }
+      @media (max-width: 700px) {
+        nav {
+          padding: 0.6rem 1rem;
+        }
+        nav b {
+          font-size: 1.4rem;
+        }
+        #hero {
+          padding: 5.5rem 1rem 15rem;
+        }
+        #hero h1 {
+          font-size: 2rem;
+        }
+        #player {
+          width: 100%;
+        }
+        .route {
+          flex-direction: column;
+          align-items: center;
+        }
+        .route .photo {
+          flex-basis: auto;
+          width: 75%;
+        }
+        .path {
+          width: 3px;
+          height: 70px;
+          flex: none;
+          border-top: 0;
+          border-left: 3px dotted #8fa3ff;
+          margin: 0;
+        }
+        .path span {
+          left: -12px;
+          top: 0;
+          animation: flyv 4.5s ease-in-out infinite;
+        }
+        @keyframes flyv {
+          to {
+            top: calc(100% - 1.6rem);
+          }
+        }
+        .trek h2 {
+          text-align: center !important;
+        }
+        .big {
+          max-width: 92%;
+        }
+        .opts .chip {
+          flex: 1 1 40%;
+        }
+        #when {
+          width: 100%;
+          margin-bottom: 0.6rem;
+        }
+        .roam {
+          font-size: 2rem;
+        }
+        .modal .card {
+          font-size: 1.35rem;
+          padding: 1.4rem;
+        }
+      }
+      @media (max-width: 420px) {
+        .favs {
+          grid-template-columns: 1fr 1fr;
+        }
+        .chip {
+          font-size: 0.9rem;
+          padding: 0.6rem 0.9rem;
+        }
+        .slide {
+          padding: 1.8rem 1.1rem;
+        }
+      }
+      @media (max-width: 700px) {
+        #hero {
+          padding-bottom: 16rem;
+        }
+      }
+      @media (max-width: 700px) {
+        nav a {
+          display: none;
+        }
+        .himal,
+        .trek {
+          grid-template-columns: 1fr;
+        }
+        .moon {
+          right: 6%;
+          width: 70px;
+          height: 70px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+
+      /* ===== FIXES: full images, bigger on hover, responsive ===== */
+      img {
+        max-width: 100%;
+      }
+      .photo figure {
+        aspect-ratio: auto !important;
+        min-height: 150px;
+      }
+      .photo img {
+        height: auto !important;
+        max-height: 72vh;
+        object-fit: contain !important;
+        margin: auto;
+      }
+      .fav .photo figure {
+        min-height: 110px;
+      }
+      .big {
+        max-width: min(420px, 92%);
+      }
+      .big figure {
+        min-height: 260px;
+      }
+      .photo {
+        cursor: zoom-in;
+        transition:
+          transform 0.35s,
+          box-shadow 0.35s;
+      }
+      .fav .photo {
+        cursor: pointer;
+      }
+      @media (hover: hover) {
+        .photo:hover {
+          transform: rotate(0) scale(1.18) !important;
+          z-index: 30;
+          box-shadow: 0 22px 46px rgba(43, 58, 143, 0.35);
+        }
+        .fav .photo:hover {
+          transform: scale(1.1) !important;
+        }
+        .big:hover {
+          transform: scale(1.05) !important;
+        }
+      }
+      .line {
+        padding: 2.6rem 1rem;
+      }
+      @media (max-width: 800px) {
+        .himal,
+        .trek {
+          grid-template-columns: 1fr;
+        }
+        .himal blockquote {
+          text-align: center;
+        }
+        .step {
+          flex-basis: 170px;
+        }
+      }
+      @media (max-width: 480px) {
+        section {
+          padding: 3rem 0.8rem;
+        }
+        .photo {
+          padding: 8px 8px 34px;
+        }
+        .photo .cap {
+          font-size: 1.1rem;
+        }
+        .route .photo {
+          width: 88%;
+        }
+        .step {
+          flex-basis: 155px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bar"></div>
+    <canvas id="fx"></canvas>
+    <div class="roam" data-gif="cat1.gif" style="--t: 34s">
+      <span class="c">🐈</span>
+    </div>
+    <div
+      class="roam rev"
+      data-gif="cat2.gif"
+      style="--t: 46s; --dl: 8s; bottom: 14px"
+    >
+      <span class="c">🐱</span>
+    </div>
+    <div
+      class="roam hop"
+      data-gif="cat3.gif"
+      style="--t: 58s; --dl: 3s; bottom: 30px"
+    >
+      <span class="c">😺</span>
+    </div>
+    <div class="roam rev" data-gif="cat4.gif" style="--t: 70s; --dl: 20s">
+      <span class="c">🐈‍⬛</span>
+    </div>
+    <nav>
+      <b>For Sangeetha ♡</b><a href="#hero">Home</a
+      ><a href="#about">Her Favorites</a><a href="#journey">Our Story</a
+      ><a href="#story">Why I Love You</a><a href="#gallery">Memories</a>
+    </nav>
+
+    <header id="hero">
+      <div class="moon"></div>
+      <div class="shoot"></div>
+      <div id="stars"></div>
+      <div class="in">
+        <h1 class="hand">
+          Aade,<br />even if you want a break…<br />I just want you to know —<br />I'll
+          be here, <em>always.</em><br />No matter how long it takes,<br />I
+          hope you come back. ♡
+        </h1>
+        <p class="days">4 Years Together ♡ and forever to go…</p>
+        <div id="player">
+          <button id="play" aria-label="Play music">▶</button>
+          <div>
+            <b>Our Love Story ♡</b><br /><small>A love letter for you…</small>
+          </div>
+        </div>
+        <audio id="song" src="music.mp3" loop></audio>
+      </div>
+      <img class="couple-img" src="couple.png" alt="" onerror="this.remove()" />
+      <div class="fade"></div>
+    </header>
+
+    <section id="about">
+      <h2 data-aos="fade-up">About Sangeetha (Aade) ♡</h2>
+      <div
+        class="photo"
+        data-aos="zoom-in"
+        style="max-width: 260px; margin: 0 auto 1.5rem"
+      >
+        <figure style="aspect-ratio: 3/4">
+          <img
+            src="img0.jpeg"
+            alt="Sangeetha Roka Magar"
+            onerror="this.remove()"
+          />
+        </figure>
+        <span class="cap">Sangeetha Roka Magar ♡</span>
+      </div>
+      <p class="praise" data-aos="fade-up">
+        A girl with the kindest heart and the most beautiful soul… Tap her
+        favorite things!
+      </p>
+      <div class="favs" style="margin-top: 2rem">
+        <div
+          class="fav"
+          data-aos="zoom-in"
+          data-say="Her keema noodles?! Chef's kiss 🍜 Nobody cooks like her."
+        >
+          <div class="photo">
+            <figure>
+              <img src="img9.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+          </div>
+          <h3>Keema Noodles</h3>
+          <small>🍜 tastiest ever</small>
+        </div>
+        <div
+          class="fav"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+          data-say="Blue… like the sky she makes feel closer 💙"
+        >
+          <div class="photo">
+            <figure>
+              <img src="blue.jpg" alt="" onerror="this.remove()" />
+            </figure>
+          </div>
+          <h3>Blue Color</h3>
+          <small>💙 calm &amp; deep</small>
+        </div>
+        <div
+          class="fav"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+          data-say="A Sunflower — graceful, pure, just like her 🤍"
+        >
+          <div class="photo">
+            <figure>
+              <img src="img1.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+          </div>
+          <h3>Sunflower</h3>
+          <small>🌸 Graceful &amp; pure</small>
+        </div>
+        <div
+          class="fav"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+          data-say="Kitty &amp; meow,meow — she loves cats! 🐱"
+        >
+          <div class="photo">
+            <figure>
+              <img src="kitty.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+          </div>
+          <h3>Kitty &amp; CAT</h3>
+          <small>🐱 Meow &amp; Meow</small>
+        </div>
+      </div>
+      <div class="bubble" id="say" style="margin-top: 1.5rem">
+        Tap a favorite ♡
+      </div>
+      <div class="cat" id="cat" title="Pet the cat">🐱</div>
+      <div class="bubble" id="catsay">And of course… cats! Tap the kitty.</div>
+      <p class="praise" data-aos="fade-up">
+        Her cooking is the tastiest thing in the world — and her smile is even
+        better.
+      </p>
+    </section>
+
+    <section id="talents">
+      <h2 data-aos="fade-up">Aade, you're so talented ✨</h2>
+      <p class="praise" data-aos="fade-up" style="margin-bottom: 1.5rem">
+        I have never met a girl like you. Tap each one!
+      </p>
+      <div class="chips" data-aos="fade-up">
+        <button
+          class="chip"
+          data-t="Cooking 🍳 — everything she makes tastes like home."
+        >
+          🍳 Cooking
+        </button>
+        <button
+          class="chip"
+          data-t="Dancing 💃 — we even won a trophy together!"
+        >
+          💃 Dancing
+        </button>
+        <button
+          class="chip"
+          data-t="Singing 🎤 — her voice could calm any storm."
+        >
+          🎤 Singing
+        </button>
+        <button
+          class="chip"
+          data-t="Fashion designing 👗 — she makes everything look beautiful."
+        >
+          👗 Fashion designing
+        </button>
+        <button
+          class="chip"
+          data-t="Mehendi artist 🌿 — art on hands, magic in fingers."
+        >
+          🌿 Mehendi artist
+        </button>
+        <button
+          class="chip"
+          data-t="Rangoli maker 🪔 — colors bloom wherever she goes."
+        >
+          🪔 Rangoli maker
+        </button>
+        <button class="chip" data-t="Artist 🎨 — she sees the world in colors.">
+          🎨 Artist
+        </button>
+        <button
+          class="chip"
+          data-t="Drawing ✏️ — a few lines from her and it's a masterpiece."
+        >
+          ✏️ Drawing
+        </button>
+        <button
+          class="chip"
+          data-t="5 ft of pure power 😂 — small kiddo, huge heart, biggest boss."
+        >
+          📏 5 ft small kiddo
+        </button>
+      </div>
+      <div class="bubble" id="tsay" style="margin-top: 1.4rem">
+        Tap a talent ♡
+      </div>
+    </section>
+
+    <section class="himal" data-aos="fade-up">
+      <div class="photo">
+        <figure>
+          <img src="himalayas.jpeg" alt="" onerror="this.remove()" />
+        </figure>
+        <span class="cap">Himalayas ♡</span>
+      </div>
+      <blockquote>
+        You are like the Himalayas…<br />So calm, so pure, so breathtaking. ♡<br /><small
+          style="font-size: 1.1rem"
+          >Strong enough to stand tall, soft enough to make the whole world
+          peaceful.</small
+        >
+      </blockquote>
+    </section>
+
+    <section id="journey">
+      <h2 data-aos="fade-up">Our Journey ♡</h2>
+      <div class="line">
+        <div class="step" data-aos="fade-left">
+          <div class="photo">
+            <figure>
+              <img src="tiktok.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+            <span class="cap">TikTok ♡</span>
+          </div>
+          <p class="hand">This date…</p>
+          <p>You followed me on TikTok &amp; Snapchat. (4 years ago)</p>
+        </div>
+        <div class="step" data-aos="fade-left" data-aos-delay="100">
+          <div class="photo">
+            <figure>
+              <img src="distance.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+            <span class="cap">Bangalore ♡</span>
+          </div>
+          <p class="hand">Long distance</p>
+          <p>
+            1 year apart — then we met face to face in India, on August 8 or 9.
+          </p>
+        </div>
+        <div class="step" data-aos="fade-left" data-aos-delay="200">
+          <div class="photo">
+            <figure>
+              <img src="togeher.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+            <span class="cap">Chandigarh University ♡</span>
+          </div>
+          <p class="hand">College</p>
+          <p>We started our college together.</p>
+        </div>
+        <div class="step" data-aos="fade-left" data-aos-delay="300">
+          <div class="photo">
+            <figure>
+              <img src="img7.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+            <span class="cap">Dance Trophy ♡</span>
+          </div>
+          <p class="hand">Winners!</p>
+          <p>And even won a trophy together!</p>
+        </div>
+        <div class="step" data-aos="fade-left" data-aos-delay="400">
+          <div class="photo">
+            <figure>
+              <img src="img5.jpeg" alt="" onerror="this.remove()" />
+            </figure>
+            <span class="cap">3 Years in India ♡</span>
+          </div>
+          <p class="hand">3 years together</p>
+          <p>Three beautiful years in India.</p>
+        </div>
+      </div>
+      <h2 style="margin-top: 3rem" data-aos="fade-up">Bangalore ♡ Nepal</h2>
+      <div class="route" data-aos="fade-up">
+        <div class="photo">
+          <figure>
+            <img src="banglore.jpg" alt="" onerror="this.remove()" />
+          </figure>
+          <span class="cap">Bangalore</span>
+        </div>
+        <div class="path"><span>💙</span></div>
+        <div class="photo" style="--r: 2deg">
+          <figure>
+            <img src="ktm.webp" alt="" onerror="this.remove()" />
+          </figure>
+          <span class="cap">Kathmandu</span>
+        </div>
+      </div>
+      <p class="praise" data-aos="fade-up">
+        She was in Bangalore, I was in Nepal — but our hearts were always in the
+        same place.
+      </p>
+    </section>
+
+    <section class="trek">
+      <div class="photo" data-aos="fade-right">
+        <figure><img src="abc.jpeg" alt="" onerror="this.remove()" /></figure>
+        <span class="cap">ABC Trek ♡</span>
+      </div>
+      <div data-aos="fade-left">
+        <h2 style="text-align: left">Our Travels &amp; Adventures ♡</h2>
+        <p>
+          From city streets to the highest peaks… from ABC Trek to the majestic
+          Himalayas, I'm so glad to explore this beautiful world with you. You
+          make every journey better.
+        </p>
+        <span class="hl hand">With you, even the mountains feel closer. ♡</span>
+      </div>
+    </section>
+
+    <section id="story">
+      <h2 data-aos="fade-up">Why I Love You ♡</h2>
+      <div class="slide card" id="slide"></div>
+      <button class="btn" id="next">Next ♡</button>
+      <div class="dots" id="dots"></div>
+      <div class="note" data-aos="fade-up">
+        <b class="hand" style="font-size: 1.6rem">A little reminder…</b>
+        <ul>
+          <li>You're beautiful</li>
+          <li>You're strong</li>
+          <li>You're enough</li>
+          <li>You're mine</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2 data-aos="fade-up">Our Gallery ♡ Surprise!</h2>
+      <p class="praise" style="margin: 0 auto 1.5rem">
+        Click next, dear… one memory at a time.
+      </p>
+      <div class="photo big" id="gbox">
+        <div class="gift" id="gift">🎁</div>
+        <figure><img id="gimg" alt="" style="display: none" /></figure>
+        <span class="cap" id="gcap">Surprise inside ♡</span>
+      </div>
+      <div style="text-align: center">
+        <button class="btn" id="gnext">Click next, dear ♡</button>
+        <div class="dots" id="gcount"></div>
+      </div>
+    </section>
+
+    <section id="return" style="text-align: center">
+      <h2 data-aos="fade-up">When will you come back, Aade? ♡</h2>
+      <p class="praise" data-aos="fade-up">
+        No pressure. Just pick a time and I'll wait for that day — and every day
+        before it.
+      </p>
+      <div class="opts">
+        <button class="chip" data-d="30">This month</button
+        ><button class="chip" data-d="90">Within 3 months</button
+        ><button class="chip" data-d="365">This year</button
+        ><button class="chip" data-d="0">Whenever you're ready</button>
+      </div>
+      <p>
+        or pick a date: <input type="date" id="when" />
+        <button class="btn" id="save" style="margin: 0 0 0 0.5rem">
+          Promise &amp; tell him ♡
+        </button>
+      </p>
+      <div id="promise"></div>
+    </section>
+
+    <section id="end" style="max-width: none; position: relative">
+      <span class="peek">🐱</span>
+      <h2 data-aos="fade-up">Thank you for being part of my life, Aade ♡</h2>
+      <p data-aos="fade-up">
+        So… even if you need a break, take your time. I'll be right here,
+        waiting for you. Because I love you. Today, tomorrow, and always. ♡
+      </p>
+      <button class="btn" id="come">Come back soon ♡</button>
+    </section>
+
+    <div class="modal" id="letter">
+      <div class="card">
+        <p>
+          Aade, my love, take all the time you need. Don't take tension about
+          anything — you're never alone.
+        </p>
+        <br />
+        <p>
+          I want to marry you. I want every sunrise, every trek, every plate of
+          keema noodles with you.
+        </p>
+        <br />
+        <p>The door is always open. Whenever you're ready, I'll be here. ♡</p>
+        <button
+          class="btn"
+          onclick="this.closest('.modal').classList.remove('show')"
+        >
+          Close ♡
+        </button>
+      </div>
+    </div>
+    <div class="modal" id="lb"><img alt="" /></div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 900, once: true });
+      // floating hearts & stars
+      const cv = document.getElementById("fx"),
+        cx = cv.getContext("2d");
+      let P = [];
+      function size() {
+        cv.width = innerWidth;
+        cv.height = innerHeight;
+      }
+      size();
+      addEventListener("resize", size);
+      function spawn(x, y, burst) {
+        P.push({
+          x: x ?? Math.random() * cv.width,
+          y: y ?? cv.height + 10,
+          vx: burst ? (Math.random() - 0.5) * 6 : (Math.random() - 0.5) * 0.4,
+          vy: burst ? -Math.random() * 5 - 1 : -Math.random() * 0.8 - 0.3,
+          s: burst ? 18 + Math.random() * 14 : 8 + Math.random() * 10,
+          a: 1,
+          c: Math.random() < 0.5 ? "#8fa3ff" : "#ff8fb1",
+          ch: Math.random() < 0.35 ? "✦" : "♥",
+          b: burst,
+        });
+      }
+      setInterval(() => spawn(), 700);
+      (function loop() {
+        cx.clearRect(0, 0, cv.width, cv.height);
+        P = P.filter((p) => p.a > 0 && p.y > -30);
+        for (const p of P) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.b) {
+            p.vy += 0.12;
+            p.a -= 0.012;
+          } else p.a = Math.min(0.6, p.a);
+          cx.globalAlpha = p.a;
+          cx.fillStyle = p.c;
+          cx.font = p.s + "px serif";
+          cx.fillText(p.ch, p.x, p.y);
+        }
+        requestAnimationFrame(loop);
+      })();
+      addEventListener("click", (e) => {
+        for (let i = 0; i < 6; i++) spawn(e.clientX, e.clientY, true);
+      });
+      // music
+      const song = document.getElementById("song"),
+        play = document.getElementById("play");
+      play.onclick = () => {
+        if (song.paused) {
+          song.play().catch(() => alert("Add music.mp3 next to index.html"));
+          play.textContent = "❚❚";
+        } else {
+          song.pause();
+          play.textContent = "▶";
+        }
+      };
+      // favorites + cat
+      const say = document.getElementById("say");
+      document.querySelectorAll(".fav").forEach(
+        (f) =>
+          (f.onclick = () => {
+            say.innerHTML = f.dataset.say;
+          }),
+      );
+      const meows = [
+        "Meow ♡",
+        "Purrrr… she loves me too 🐾",
+        "Mrrp! Come back soon, human.",
+        "Cats &amp; her = best duo 🐱",
+      ];
+      let mi = 0;
+      document.getElementById("cat").onclick = () => {
+        document.getElementById("catsay").innerHTML =
+          meows[mi++ % meows.length];
+      };
+      // story
+      const S = [
+        [
+          "I have never met a girl like you",
+          "Aade, nobody laughs like you, cares like you, or makes a normal day feel special like you.",
+        ],
+        [
+          "Your heart",
+          "You are the kindest person I know — your soul is the most beautiful thing about you.",
+        ],
+        [
+          "Your food",
+          "Your cooking is the tastiest in the world. Your briyani, those chicken curry? I could eat them every day.",
+        ],
+        [
+          "Your beauty",
+          "Like the Himalayas at sunrise — calm, pure, and breathtaking.",
+        ],
+        [
+          "Life has ups and downs",
+          "Some days are heavy, some are light. That's life. Don't lose hope, Aade — every storm passes.",
+        ],
+        [
+          "Don't take tension",
+          "You're strong, you're enough, and you're never facing anything alone.",
+        ],
+        [
+          "Our adventures",
+          "From Bangalore to Nepal, Chandigarh to ABC Trek — every journey was better with you.",
+        ],
+        [
+          "We will build our future",
+          "Together. A home, our dreams, our little world — brick by brick.",
+        ],
+        [
+          "We will marry 💍",
+          "I want to marry you. That's not a maybe, that's a promise.",
+        ],
+        [
+          "The comedy plan 😂",
+          "Then we'll have 11 children and make our own football team ⚽. I'll be the goalkeeper — you'll be the coach, all 5 feet of you, and everyone will obey.",
+        ],
+        [
+          "My promise",
+          "Whenever you're ready, however long it takes — I'll be here. ♡",
+        ],
+      ];
+      let i = 0;
+      const sl = document.getElementById("slide"),
+        dt = document.getElementById("dots"),
+        nx = document.getElementById("next");
+      function show() {
+        sl.classList.remove("swap");
+        void sl.offsetWidth;
+        sl.classList.add("swap");
+        sl.innerHTML = `<span class="hand">${S[i][0]} ♡</span><p>${S[i][1]}</p>`;
+        dt.textContent = S.map((_, k) => (k <= i ? "♥" : "♡")).join(" ");
+        nx.textContent = i == S.length - 1 ? "Start again ♡" : "Next ♡";
+      }
+      nx.onclick = () => {
+        i = (i + 1) % S.length;
+        show();
+      };
+      show();
+      document
+        .querySelectorAll(".note li")
+        .forEach((l) => (l.onclick = () => l.classList.toggle("on")));
+      // stars
+      const st = document.getElementById("stars");
+      for (let k = 0; k < 90; k++) {
+        const d = document.createElement("i");
+        d.className = "star";
+        d.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 70}%;animation-delay:${Math.random() * 3}s`;
+        st.appendChild(d);
+      }
+      // talents
+      document.querySelectorAll(".chip[data-t]").forEach(
+        (c) =>
+          (c.onclick = () => {
+            document.getElementById("tsay").textContent = c.dataset.t;
+            for (let k = 0; k < 8; k++)
+              spawn(innerWidth / 2, innerHeight / 2, true);
+          }),
+      );
+      // surprise gallery
+      const G = [
+        "Our first memory ♡",
+        "You, being you ✨",
+        "Adventure partners",
+        "Your beautiful smile",
+        "Me + you = home",
+        "Another favorite day",
+        "Cutie kiddo 5 ft 😂",
+        "Mountains with you",
+        "Dance partners 💃",
+        "Chandigarh days",
+        "Together, always",
+        "And many more to come ♡",
+      ];
+      let gi = -1;
+      const gimg = document.getElementById("gimg"),
+        gc = document.getElementById("gcap"),
+        gift = document.getElementById("gift"),
+        cnt = document.getElementById("gcount"),
+        gn = document.getElementById("gnext");
+      gimg.onload = () => (gimg.style.display = "block");
+      gimg.onerror = () => (gimg.style.display = "none");
+      gn.onclick = () => {
+        gi = (gi + 1) % G.length;
+        gift.style.display = "none";
+        gimg.style.display = "none";
+        gimg.src = "img" + (14 + gi) + ".png";
+        gc.textContent = G[gi];
+        cnt.textContent = gi + 1 + " / " + G.length;
+        gn.textContent =
+          gi == G.length - 1 ? "Start again ♡" : "Click next, dear ♡";
+        document.getElementById("gbox").animate(
+          [
+            { transform: "scale(.9) rotate(-4deg)", opacity: 0 },
+            { transform: "scale(1) rotate(0)", opacity: 1 },
+          ],
+          { duration: 450 },
+        );
+        for (let k = 0; k < 10; k++)
+          spawn(innerWidth / 2, innerHeight / 2, true);
+      };
+      // ===== SETTINGS: fill these two =====
+      const CONFIG = { KEY: "YOUR_WEB3FORMS_KEY", WA: "977XXXXXXXXXX" };
+      // return date
+      const pr = document.getElementById("promise"),
+        wh = document.getElementById("when");
+      async function notify(txt) {
+        if (CONFIG.KEY.startsWith("YOUR")) return false;
+        try {
+          const r = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              access_key: CONFIG.KEY,
+              subject: "Aade chose a date ♡",
+              message: txt,
+            }),
+          });
+          return (await r.json()).success;
+        } catch (e) {
+          return false;
+        }
+      }
+      async function setP(d, send, label) {
+        const t = new Date(d);
+        const n = Math.ceil((t - new Date()) / 864e5);
+        let msg = isNaN(t)
+          ? label || ""
+          : n > 0
+            ? `I'll be waiting on ${t.toDateString()} — only ${n} days. And every day till then, I love you ♡`
+            : "Whenever you come, I'll be right here ♡";
+        pr.innerHTML = msg;
+        try {
+          localStorage.setItem("back", d);
+        } catch (e) {}
+        for (let k = 0; k < 30; k++)
+          setTimeout(
+            () => spawn(innerWidth / 2, innerHeight / 2, true),
+            k * 20,
+          );
+        if (send) {
+          const text =
+            "Aade chose: " +
+            (label || t.toDateString()) +
+            " (" +
+            new Date().toLocaleString() +
+            ")";
+          const ok = await notify(text);
+          pr.innerHTML =
+            msg +
+            (ok
+              ? '<br><small style="font-size:1.1rem">Your message reached me ♡</small>'
+              : "") +
+            `<br><a id="wa" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.WA}?text=${encodeURIComponent("Aade here ♡ " + text)}">Also tell him on WhatsApp 💬</a>`;
+        }
+      }
+      document.querySelectorAll(".opts .chip").forEach(
+        (c) =>
+          (c.onclick = () => {
+            const n = +c.dataset.d;
+            if (!n) {
+              setP("", true, "Whenever I'm ready");
+              pr.textContent =
+                "Take all the time you need, Aade. I'll be here, always ♡";
+              return;
+            }
+            const t = new Date(Date.now() + n * 864e5);
+            wh.value = t.toISOString().slice(0, 10);
+            setP(wh.value, true, c.textContent + " (" + t.toDateString() + ")");
+          }),
+      );
+      document.getElementById("save").onclick = () => {
+        if (wh.value) setP(wh.value, true);
+      };
+      try {
+        const v = localStorage.getItem("back");
+        if (v) {
+          wh.value = v;
+          setP(v, false);
+        }
+      } catch (e) {}
+      // ===== extra animation =====
+      const h1 = document.querySelector("#hero h1");
+      h1.innerHTML = h1.innerHTML
+        .split("<br>")
+        .map(
+          (l, k) =>
+            `<span class="line-in" style="animation-delay:${0.3 + k * 0.45}s">${l}</span>`,
+        )
+        .join("");
+      const bar = document.getElementById("bar"),
+        moon = document.querySelector(".moon"),
+        ci = document.querySelector(".img1");
+      addEventListener(
+        "scroll",
+        () => {
+          const y = scrollY;
+          bar.style.width =
+            (y / (document.body.scrollHeight - innerHeight)) * 100 + "%";
+          if (y < innerHeight * 1.2) {
+            moon.style.transform = `translateY(${y * 0.3}px)`;
+            if (ci) ci.style.marginBottom = -y * 0.12 + "px";
+          }
+        },
+        { passive: true },
+      );
+      let lt = 0;
+      addEventListener("pointermove", (e) => {
+        const n = Date.now();
+        if (n - lt > 90) {
+          lt = n;
+          spawn(e.clientX, e.clientY, false);
+        }
+      });
+      // cats: use catN.gif if present
+      const says = [
+        "Meow ♡",
+        "Mrrp!",
+        "Purr purr 🐾",
+        "Aade, come back!",
+        "Feed me keema 🍜",
+        "Nya~ ♡",
+      ];
+      document.querySelectorAll(".roam").forEach((el) => {
+        const im = new Image();
+        im.onload = () => {
+          im.className = "c";
+          el.querySelector(".c").replaceWith(im);
+        };
+        im.src = el.dataset.gif;
+        el.onclick = (e) => {
+          e.stopPropagation();
+          const m = document.createElement("div");
+          m.className = "meow";
+          m.textContent = says[(Math.random() * says.length) | 0];
+          const r = el.getBoundingClientRect();
+          m.style.left = r.left + "px";
+          m.style.top = r.top - 40 + "px";
+          document.body.appendChild(m);
+          setTimeout(() => m.remove(), 1400);
+          for (let k = 0; k < 6; k++) spawn(r.left + 20, r.top, true);
+        };
+      });
+      setInterval(() => {
+        if (P.length < 80) {
+          const x = Math.random() * cv.width;
+          P.push({
+            x,
+            y: cv.height,
+            vx: 0,
+            vy: -0.6,
+            s: 16,
+            a: 0.5,
+            c: "#8fa3ff",
+            ch: "🐾",
+            b: false,
+          });
+        }
+      }, 2500);
+      // come back
+      document.getElementById("come").onclick = (e) => {
+        for (let k = 0; k < 60; k++)
+          setTimeout(
+            () => spawn(innerWidth / 2, innerHeight / 2, true),
+            k * 15,
+          );
+        document.getElementById("letter").classList.add("show");
+      };
+    </script>
+
+    <script>
+      /* ===== SURPRISE GALLERY: CHANGE YOUR PHOTOS HERE ===== */
+      /* Save your photos with these names next to index.html.
+   Write the name WITHOUT the extension. The page finds .jpeg, .jpg, .png, .webp or .gif by itself.
+   Change the captions (cap) to whatever you like. */
+      const SURPRISE = [
+        { img: "img4", cap: "Our first memory ♡" },
+        { img: "you", cap: "You, being you ✨" },
+        { img: "advp", cap: "Adventure partners" },
+        { img: "smile", cap: "Your beautiful smile" },
+        { img: "home", cap: "Me + you = home" },
+        { img: "fav", cap: "Another favorite day" },
+        { img: "kiddo", cap: "Cutie kiddo 5 ft 😂" },
+        { img: "adv", cap: "Mountains with you" },
+        { img: "dancee", cap: "Dance partners 💃" },
+        { img: "days", cap: "Chandigarh days" },
+        { img: "img2", cap: "Together, always" },
+        { img: "img8", cap: "And many more to come ♡" },
+      ];
+      /* ===== END OF SETTINGS ===== */
+
+      const EXTS = ["jpeg", "jpg", "png", "webp", "gif"];
+      function loadSurprise(name) {
+        let k = 0;
+        gimg.style.display = "none";
+        gimg.onload = () => (gimg.style.display = "block");
+        gimg.onerror = () => {
+          k++;
+          if (k < EXTS.length) gimg.src = name + "." + EXTS[k];
+          else gimg.style.display = "none";
+        };
+        gimg.src = name + "." + EXTS[0];
+      }
+      gi = -1;
+      gn.onclick = () => {
+        gi = (gi + 1) % SURPRISE.length;
+        gift.style.display = "none";
+        loadSurprise(SURPRISE[gi].img);
+        gc.textContent = SURPRISE[gi].cap;
+        cnt.textContent = gi + 1 + " / " + SURPRISE.length;
+        gn.textContent =
+          gi == SURPRISE.length - 1 ? "Start again ♡" : "Click next, dear ♡";
+        document.getElementById("gbox").animate(
+          [
+            { transform: "scale(.9) rotate(-4deg)", opacity: 0 },
+            { transform: "scale(1) rotate(0)", opacity: 1 },
+          ],
+          { duration: 450 },
+        );
+        for (let k = 0; k < 10; k++)
+          spawn(innerWidth / 2, innerHeight / 2, true);
+      };
+
+      /* tap any photo to see it full size */
+      lb.onclick = () => lb.classList.remove("show");
+      document.addEventListener("click", (e) => {
+        const ph = e.target.closest(".photo");
+        if (!ph || ph.closest(".fav")) return;
+        const im = ph.querySelector("img");
+        if (im && im.style.display !== "none" && im.naturalWidth) {
+          lb.querySelector("img").src = im.src;
+          lb.classList.add("show");
+        }
+      });
+    </script>
+  </body>
+</html>
