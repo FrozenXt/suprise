@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>For Sangeetha ♡</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link
@@ -18,6 +21,7 @@
         --paper: #fbfbff;
         --ink: #27306b;
         --rose: #ff8fb1;
+        --sun: #ffc93c;
       }
       * {
         box-sizing: border-box;
@@ -25,12 +29,16 @@
       }
       html {
         scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
       }
       body {
         font-family: Nunito, sans-serif;
         color: var(--ink);
         background: var(--mist);
         overflow-x: hidden;
+      }
+      img {
+        max-width: 100%;
       }
       h1,
       h2,
@@ -40,20 +48,45 @@
         font-weight: 700;
       }
       h2 {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(1.8rem, 6vw, 3rem);
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.15;
+        background: linear-gradient(90deg, #27306b, #5b7bff, #ff8fb1, #27306b);
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shim 8s linear infinite;
+      }
+      @keyframes shim {
+        to {
+          background-position: 300% 0;
+        }
       }
       section {
-        padding: 4.5rem 1.2rem;
+        padding: clamp(2.5rem, 7vw, 4.5rem) 1rem;
         max-width: 1100px;
         margin: auto;
+        position: relative;
+      }
+      button {
+        -webkit-tap-highlight-color: transparent;
       }
       #fx {
         position: fixed;
         inset: 0;
         pointer-events: none;
         z-index: 1;
+      }
+      #bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: linear-gradient(90deg, #8fa3ff, #ffc93c, #ff8fb1);
+        z-index: 60;
       }
       nav {
         position: fixed;
@@ -62,17 +95,17 @@
         right: 0;
         z-index: 20;
         display: flex;
-        gap: 1.4rem;
+        gap: 1.3rem;
         justify-content: flex-end;
         align-items: center;
-        padding: 0.8rem 1.4rem;
+        padding: 0.7rem 1.2rem;
         background: rgba(20, 26, 77, 0.55);
         backdrop-filter: blur(8px);
       }
       nav b {
         margin-right: auto;
         font-family: Caveat;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         color: #fff;
       }
       nav a {
@@ -83,10 +116,12 @@
       nav a:hover {
         color: #fff;
       }
+      /* hero */
       #hero {
         max-width: none;
         min-height: 100vh;
-        padding: 7rem 1.5rem 12rem;
+        min-height: 100svh;
+        padding: 6.5rem 1.2rem 9rem;
         background: linear-gradient(#141a4d, #2b3a8f 60%, #7e92e8);
         color: #fff;
         position: relative;
@@ -99,7 +134,7 @@
         z-index: 3;
       }
       #hero h1 {
-        font-size: clamp(2rem, 5.5vw, 3.6rem);
+        font-size: clamp(1.9rem, 7vw, 3.6rem);
         line-height: 1.25;
         max-width: 560px;
         font-weight: 500;
@@ -107,379 +142,37 @@
       #hero h1 em {
         color: #a9bbff;
       }
+      .line-in {
+        display: block;
+        opacity: 0;
+        transform: translateY(24px);
+        filter: blur(6px);
+        animation: li 0.9s forwards;
+      }
+      @keyframes li {
+        to {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      }
       .moon {
         position: absolute;
-        right: 12%;
-        top: 12%;
-        width: 110px;
-        height: 110px;
+        right: 10%;
+        top: 14%;
+        width: clamp(70px, 14vw, 120px);
+        aspect-ratio: 1;
         border-radius: 50%;
         background: #fff8e6;
         box-shadow: 0 0 60px 20px rgba(255, 248, 230, 0.45);
         animation: glow 5s ease-in-out infinite;
+        will-change: transform;
       }
       @keyframes glow {
         50% {
           box-shadow: 0 0 90px 34px rgba(255, 248, 230, 0.6);
         }
       }
-      .mount {
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        z-index: 2;
-      }
-      .couple {
-        position: absolute;
-        bottom: 60px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 4rem;
-        z-index: 3;
-        animation: bob 4s ease-in-out infinite;
-      }
-      @keyframes bob {
-        50% {
-          transform: translate(-50%, -8px);
-        }
-      }
-      .days {
-        margin-top: 1.6rem;
-        font-size: 0.95rem;
-        color: #cdd7ff;
-      }
-      #player {
-        margin-top: 2rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.9rem;
-        background: rgba(255, 255, 255, 0.14);
-        padding: 0.8rem 1.2rem;
-        border-radius: 18px;
-        backdrop-filter: blur(6px);
-      }
-      #play {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        border: 0;
-        background: #fff;
-        color: var(--sky);
-        font-size: 1.2rem;
-        cursor: pointer;
-      }
-      .card,
-      .fav,
-      .slide,
-      .note {
-        background: var(--paper);
-        border-radius: 14px;
-        box-shadow: 0 8px 26px rgba(43, 58, 143, 0.14);
-      }
-      .photo {
-        position: relative;
-        background: #fff;
-        padding: 10px 10px 38px;
-        border-radius: 6px;
-        box-shadow: 0 10px 28px rgba(43, 58, 143, 0.22);
-        transform: rotate(var(--r, -2deg));
-        transition: transform 0.3s;
-      }
-      .photo:hover {
-        transform: rotate(0) scale(1.04);
-      }
-      .photo figure {
-        aspect-ratio: 4/3;
-        background: linear-gradient(135deg, #dfe5ff, #c3cfff);
-        display: grid;
-        place-items: center;
-        overflow: hidden;
-        border-radius: 3px;
-      }
-      .photo figure::before {
-        content: "♡";
-        font-size: 2.4rem;
-        color: #8fa3ff;
-        position: absolute;
-      }
-      .photo img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .photo figcaption,
-      .photo .cap {
-        position: absolute;
-        bottom: 8px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-family: Caveat;
-        font-size: 1.3rem;
-      }
-      .favs {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.2rem;
-      }
-      .fav {
-        padding: 1rem;
-        text-align: center;
-        cursor: pointer;
-        transition: 0.3s;
-      }
-      .fav:hover {
-        transform: translateY(-8px) rotate(-2deg);
-      }
-      .fav .photo {
-        --r: 0;
-        padding: 6px;
-        box-shadow: none;
-      }
-      .fav .photo figure {
-        aspect-ratio: 1;
-      }
-      .fav h3 {
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
-      }
-      .fav small {
-        display: block;
-        opacity: 0.75;
-      }
-      .praise {
-        max-width: 640px;
-        margin: 2rem auto 0;
-        text-align: center;
-        font-size: 1.05rem;
-        line-height: 1.8;
-      }
-      .praise .hand {
-        font-size: 1.7rem;
-        color: var(--blue);
-      }
-      .cat {
-        font-size: 3.5rem;
-        text-align: center;
-        margin-top: 1rem;
-        cursor: pointer;
-        user-select: none;
-      }
-      .cat:active {
-        animation: wig 0.4s;
-      }
-      @keyframes wig {
-        25% {
-          transform: rotate(-12deg);
-        }
-        75% {
-          transform: rotate(12deg);
-        }
-      }
-      .bubble {
-        font-family: Caveat;
-        font-size: 1.5rem;
-        text-align: center;
-        min-height: 2rem;
-        color: var(--blue);
-      }
-      .himal {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-      }
-      .himal blockquote {
-        font-family: Caveat;
-        font-size: 1.9rem;
-        line-height: 1.4;
-      }
-      .line {
-        display: flex;
-        gap: 1.4rem;
-        overflow-x: auto;
-        padding: 1.4rem 0.5rem;
-        scroll-snap-type: x mandatory;
-      }
-      .step {
-        flex: 0 0 220px;
-        scroll-snap-align: center;
-        text-align: center;
-      }
-      .step p {
-        margin-top: 0.8rem;
-        font-size: 0.92rem;
-      }
-      .step .hand {
-        font-size: 1.25rem;
-        color: var(--blue);
-      }
-      .route {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        margin-top: 2.5rem;
-      }
-      .route .photo {
-        flex: 0 0 28%;
-      }
-      .path {
-        flex: 1;
-        position: relative;
-        height: 60px;
-        border-top: 3px dotted #8fa3ff;
-        margin-top: -20px;
-      }
-      .path span {
-        position: absolute;
-        top: -17px;
-        left: 0;
-        font-size: 1.6rem;
-        animation: fly 4.5s ease-in-out infinite;
-      }
-      @keyframes fly {
-        to {
-          left: calc(100% - 1.6rem);
-        }
-      }
-      .trek {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        align-items: center;
-      }
-      .trek p {
-        font-family: Caveat;
-        font-size: 1.6rem;
-        line-height: 1.5;
-      }
-      .hl {
-        display: inline-block;
-        background: #c9d4ff;
-        padding: 0.3rem 1rem;
-        border-radius: 8px;
-        margin-top: 1rem;
-      }
-      #story {
-        text-align: center;
-      }
-      .slide {
-        padding: 2.4rem 1.6rem;
-        max-width: 560px;
-        margin: auto;
-        min-height: 230px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 0.7rem;
-      }
-      .slide .hand {
-        font-size: 2.1rem;
-        color: var(--blue);
-      }
-      .slide.swap {
-        animation: pop 0.5s;
-      }
-      @keyframes pop {
-        from {
-          opacity: 0;
-          transform: translateY(20px) scale(0.95);
-        }
-      }
-      .btn {
-        margin-top: 1.2rem;
-        border: 0;
-        border-radius: 30px;
-        background: var(--blue);
-        color: #fff;
-        padding: 0.8rem 1.8rem;
-        font: 600 1rem Nunito;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(91, 123, 255, 0.4);
-        transition: 0.2s;
-      }
-      .btn:hover {
-        transform: scale(1.06);
-      }
-      .dots {
-        margin-top: 0.8rem;
-        color: #8fa3ff;
-        letter-spacing: 0.3rem;
-      }
-      .note {
-        max-width: 340px;
-        margin: 2rem auto 0;
-        padding: 1.2rem 1.6rem;
-        transform: rotate(2deg);
-      }
-      .note li {
-        list-style: none;
-        padding: 0.35rem 0;
-        cursor: pointer;
-        font-family: Caveat;
-        font-size: 1.5rem;
-      }
-      .note li::before {
-        content: "☐ ";
-        color: var(--blue);
-      }
-      .note li.on::before {
-        content: "✔ ";
-      }
-      .note li.on {
-        text-decoration: underline wavy var(--rose);
-      }
-      .gal {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-        gap: 1.4rem;
-      }
-      .gal .photo:nth-child(even) {
-        --r: 2.5deg;
-      }
-      #end {
-        max-width: none;
-        background: linear-gradient(#eef0ff, #9fb2ff 70%, #4a5fc7);
-        text-align: center;
-        padding-bottom: 6rem;
-      }
-      #end p {
-        font-family: Caveat;
-        font-size: clamp(1.5rem, 4vw, 2.2rem);
-        line-height: 1.5;
-        max-width: 640px;
-        margin: auto;
-      }
-      .modal {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        display: none;
-        place-items: center;
-        background: rgba(20, 26, 77, 0.7);
-        padding: 1rem;
-      }
-      .modal.show {
-        display: grid;
-      }
-      .modal .card {
-        max-width: 520px;
-        padding: 2rem;
-        text-align: center;
-        font-family: Caveat;
-        font-size: 1.6rem;
-        line-height: 1.5;
-        animation: pop 0.5s;
-      }
-      .modal img {
-        max-width: 92vw;
-        max-height: 88vh;
-        border-radius: 8px;
-      }
-
       .star {
         position: absolute;
         width: 3px;
@@ -521,70 +214,40 @@
           opacity: 0;
         }
       }
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        justify-content: center;
-      }
-      .chip {
-        border: 0;
-        background: var(--paper);
-        color: var(--ink);
-        padding: 0.7rem 1.2rem;
-        border-radius: 30px;
-        font: 600 1rem Nunito;
-        cursor: pointer;
-        box-shadow: 0 6px 18px rgba(43, 58, 143, 0.15);
-        transition: 0.25s;
-      }
-      .chip:hover {
-        background: var(--blue);
-        color: #fff;
-        transform: translateY(-4px) scale(1.06);
-      }
-      .big {
-        max-width: 420px;
-        margin: 0 auto;
-      }
-      .big figure {
-        aspect-ratio: 4/5;
-      }
-      .gift {
-        position: absolute;
-        inset: 10px 10px 38px;
-        display: grid;
-        place-items: center;
-        font-size: 5rem;
-        background: linear-gradient(135deg, #c3cfff, #e6d9ff);
-        z-index: 2;
-        border-radius: 3px;
-        animation: bob2 2s ease-in-out infinite;
-      }
-      @keyframes bob2 {
-        50% {
-          transform: scale(1.05);
-        }
-      }
-      .opts {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        justify-content: center;
-        margin: 1.2rem 0;
-      }
-      #when {
-        padding: 0.6rem 1rem;
-        border-radius: 12px;
-        border: 2px solid #8fa3ff;
-        font: 600 1rem Nunito;
-        color: var(--ink);
-      }
-      #promise {
+      .days {
         margin-top: 1.4rem;
-        font-family: Caveat;
-        font-size: 1.8rem;
-        min-height: 2rem;
+        font-size: 0.95rem;
+        color: #cdd7ff;
+      }
+      #player {
+        margin-top: 1.6rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.9rem;
+        background: rgba(255, 255, 255, 0.14);
+        padding: 0.8rem 1.2rem;
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+      }
+      #play {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        border: 0;
+        background: #fff;
+        color: var(--sky);
+        font-size: 1.2rem;
+        cursor: pointer;
+        flex: none;
+      }
+      .fade {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 90px;
+        background: linear-gradient(transparent, #eef0ff);
+        z-index: 4;
       }
       .couple-img {
         position: absolute;
@@ -603,71 +266,565 @@
           #000 50%,
           transparent 75%
         );
-        animation: bob 6s ease-in-out infinite;
       }
-      .fade {
+      /* sunflowers + butterflies */
+      .field {
         position: absolute;
-        bottom: 0;
         left: 0;
         right: 0;
-        height: 110px;
-        background: linear-gradient(transparent, #eef0ff);
-        z-index: 4;
+        bottom: -4px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        z-index: 5;
+        pointer-events: none;
       }
-      #hero {
-        min-height: 110vh;
+      .field span {
+        display: inline-block;
+        transform-origin: bottom center;
+        animation: sway 4s ease-in-out infinite;
       }
-
-      #bar {
+      .field span:nth-child(odd) {
+        font-size: clamp(2.2rem, 8vw, 4rem);
+      }
+      .field span:nth-child(even) {
+        font-size: clamp(1.6rem, 5vw, 2.6rem);
+        animation-delay: -1.5s;
+      }
+      .field span:nth-child(3n) {
+        animation-delay: -0.7s;
+      }
+      @keyframes sway {
+        50% {
+          transform: rotate(7deg);
+        }
+        0%,
+        100% {
+          transform: rotate(-7deg);
+        }
+      }
+      .sf {
+        position: absolute;
+        font-size: clamp(2.2rem, 7vw, 3.6rem);
+        animation: sway 5s ease-in-out infinite;
+        transform-origin: bottom center;
+        pointer-events: none;
+      }
+      .bf {
         position: fixed;
-        top: 0;
-        left: 0;
-        height: 3px;
-        width: 0;
-        background: linear-gradient(90deg, #8fa3ff, #ff8fb1);
-        z-index: 60;
+        z-index: 35;
+        pointer-events: none;
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        animation: var(--p, fa) var(--t, 22s) ease-in-out infinite;
       }
-      .line-in {
+      .bf span {
         display: block;
-        opacity: 0;
-        transform: translateY(24px);
-        filter: blur(6px);
-        animation: li 0.9s forwards;
+        filter: hue-rotate(var(--h, 0deg));
+        animation: flap 0.35s ease-in-out infinite;
       }
-      @keyframes li {
-        to {
-          opacity: 1;
-          transform: none;
-          filter: none;
+      @keyframes flap {
+        50% {
+          transform: scaleX(0.25);
         }
       }
-      h2 {
-        background: linear-gradient(90deg, #27306b, #5b7bff, #ff8fb1, #27306b);
-        background-size: 300% 100%;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: shim 8s linear infinite;
-      }
-      #hero h2,
-      #end h2 {
-        color: inherit;
-      }
-      @keyframes shim {
-        to {
-          background-position: 300% 0;
+      @keyframes fa {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0);
+        }
+        25% {
+          transform: translate(30vw, -14vh) rotate(18deg);
+        }
+        50% {
+          transform: translate(62vw, 8vh) rotate(-12deg);
+        }
+        75% {
+          transform: translate(28vw, 22vh) rotate(14deg);
         }
       }
-      .moon,
-      .couple-img {
-        will-change: transform;
+      @keyframes fb {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0);
+        }
+        30% {
+          transform: translate(-35vw, 12vh) rotate(-16deg);
+        }
+        60% {
+          transform: translate(-18vw, -16vh) rotate(12deg);
+        }
+        80% {
+          transform: translate(-50vw, -4vh) rotate(-8deg);
+        }
       }
+      @keyframes fc {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        20% {
+          transform: translate(22vw, 18vh);
+        }
+        45% {
+          transform: translate(-14vw, 30vh);
+        }
+        70% {
+          transform: translate(26vw, -10vh);
+        }
+      }
+      /* cards & photos */
+      .card,
+      .fav,
+      .slide,
+      .note {
+        background: var(--paper);
+        border-radius: 14px;
+        box-shadow: 0 8px 26px rgba(43, 58, 143, 0.14);
+      }
+      .photo {
+        position: relative;
+        background: #fff;
+        padding: 10px 10px 38px;
+        border-radius: 6px;
+        box-shadow: 0 10px 28px rgba(43, 58, 143, 0.22);
+        transform: rotate(var(--r, -2deg));
+        transition:
+          transform 0.35s,
+          box-shadow 0.35s;
+        cursor: zoom-in;
+      }
+      .photo figure {
+        background: linear-gradient(135deg, #dfe5ff, #c3cfff);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 3px;
+        min-height: 150px;
+        position: relative;
+      }
+      .photo figure::before {
+        content: "♡";
+        font-size: 2.4rem;
+        color: #8fa3ff;
+        position: absolute;
+      }
+      .photo img {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: 72vh;
+        object-fit: contain;
+        display: block;
+        margin: auto;
+      }
+      .photo .cap {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: Caveat;
+        font-size: 1.3rem;
+      }
+      @media (hover: hover) {
+        .photo:hover {
+          transform: rotate(0) scale(1.15);
+          z-index: 30;
+          box-shadow: 0 22px 46px rgba(43, 58, 143, 0.35);
+        }
+        .fav .photo:hover {
+          transform: scale(1.08);
+        }
+        .big:hover {
+          transform: scale(1.05);
+        }
+      }
+      .favs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1.1rem;
+      }
+      .fav {
+        padding: 0.9rem;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .fav:hover {
+        transform: translateY(-6px) rotate(-2deg);
+      }
+      .fav .photo {
+        --r: 0;
+        padding: 6px;
+        box-shadow: none;
+        cursor: pointer;
+      }
+      .fav .photo figure {
+        min-height: 110px;
+      }
+      .fav h3 {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+      }
+      .fav small {
+        display: block;
+        opacity: 0.75;
+      }
+      .praise {
+        max-width: 640px;
+        margin: 1.6rem auto 0;
+        text-align: center;
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+      .cat {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-top: 1rem;
+        cursor: pointer;
+        user-select: none;
+      }
+      .cat:active {
+        animation: wig 0.4s;
+      }
+      @keyframes wig {
+        25% {
+          transform: rotate(-12deg);
+        }
+        75% {
+          transform: rotate(12deg);
+        }
+      }
+      .bubble {
+        font-family: Caveat;
+        font-size: 1.5rem;
+        text-align: center;
+        min-height: 2rem;
+        color: var(--blue);
+      }
+      .portrait {
+        max-width: min(260px, 70%);
+        margin: 0 auto 1.5rem;
+      }
+      .himal,
+      .trek {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .himal blockquote {
+        font-family: Caveat;
+        font-size: 1.9rem;
+        line-height: 1.4;
+      }
+      .trek p {
+        font-family: Caveat;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
+      .hl {
+        display: inline-block;
+        background: #c9d4ff;
+        padding: 0.3rem 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+      }
+      .chips,
+      .opts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        justify-content: center;
+      }
+      .opts {
+        margin: 1.2rem 0;
+      }
+      .chip {
+        border: 0;
+        background: var(--paper);
+        color: var(--ink);
+        padding: 0.7rem 1.2rem;
+        min-height: 44px;
+        border-radius: 30px;
+        font: 600 1rem Nunito;
+        cursor: pointer;
+        box-shadow: 0 6px 18px rgba(43, 58, 143, 0.15);
+        transition: 0.25s;
+      }
+      .chip:hover {
+        background: var(--blue);
+        color: #fff;
+        transform: translateY(-4px) scale(1.06);
+      }
+      .btn {
+        margin-top: 1.1rem;
+        border: 0;
+        border-radius: 30px;
+        background: var(--blue);
+        color: #fff;
+        padding: 0.8rem 1.8rem;
+        min-height: 46px;
+        font: 600 1rem Nunito;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(91, 123, 255, 0.4);
+        transition: 0.2s;
+      }
+      .btn:hover {
+        transform: scale(1.06);
+      }
+      .btn.sm {
+        padding: 0.7rem 1.2rem;
+        margin: 0;
+      }
+      .dots {
+        margin-top: 0.8rem;
+        color: #8fa3ff;
+        letter-spacing: 0.3rem;
+        font-size: 0.95rem;
+      }
+      /* journey carousel */
+      .car {
+        max-width: 420px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .cs {
+        display: none;
+      }
+      .cs.on {
+        display: block;
+        animation: slide 0.55s;
+      }
+      @keyframes slide {
+        from {
+          opacity: 0;
+          transform: translateX(40px) scale(0.96);
+        }
+      }
+      .cs .photo {
+        max-width: 340px;
+        margin: 0 auto 1rem;
+      }
+      .cs .hand {
+        font-size: 1.7rem;
+        color: var(--blue);
+      }
+      .cs p {
+        margin-top: 0.3rem;
+      }
+      .cnav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+        flex-wrap: wrap;
+      }
+      .cnav .dots {
+        margin: 0;
+        order: 3;
+        width: 100%;
+      }
+      /* route */
+      .route {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+      }
+      .route .photo {
+        flex: 0 0 30%;
+      }
+      .path {
+        flex: 1;
+        position: relative;
+        height: 60px;
+        border-top: 3px dotted #8fa3ff;
+        margin-top: -20px;
+      }
+      .path span {
+        position: absolute;
+        top: -17px;
+        left: 0;
+        font-size: 1.6rem;
+        animation: fly 4.5s ease-in-out infinite;
+      }
+      @keyframes fly {
+        to {
+          left: calc(100% - 1.6rem);
+        }
+      }
+      /* story */
+      #story {
+        text-align: center;
+      }
+      .slide {
+        padding: 2.2rem 1.4rem;
+        max-width: 560px;
+        margin: auto;
+        min-height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.7rem;
+      }
+      .slide .hand {
+        font-size: 2.1rem;
+        color: var(--blue);
+        line-height: 1.1;
+      }
+      .slide.swap {
+        animation: pop 0.5s;
+      }
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.95);
+        }
+      }
+      .note {
+        max-width: 340px;
+        margin: 2rem auto 0;
+        padding: 1.2rem 1.6rem;
+        transform: rotate(2deg);
+        text-align: left;
+      }
+      .note li {
+        list-style: none;
+        padding: 0.35rem 0;
+        cursor: pointer;
+        font-family: Caveat;
+        font-size: 1.5rem;
+      }
+      .note li::before {
+        content: "☐ ";
+        color: var(--blue);
+      }
+      .note li.on::before {
+        content: "✔ ";
+      }
+      .note li.on {
+        text-decoration: underline wavy var(--rose);
+      }
+      /* gallery */
+      .big {
+        max-width: min(420px, 92%);
+        margin: 0 auto;
+      }
+      .big figure {
+        min-height: 260px;
+      }
+      .gift {
+        position: absolute;
+        inset: 10px 10px 38px;
+        display: grid;
+        place-items: center;
+        font-size: 5rem;
+        background: linear-gradient(135deg, #ffe9a3, #e6d9ff);
+        z-index: 2;
+        border-radius: 3px;
+        animation: bob2 2s ease-in-out infinite;
+      }
+      @keyframes bob2 {
+        50% {
+          transform: scale(1.05);
+        }
+      }
+      /* return */
+      #when {
+        padding: 0.6rem 1rem;
+        border-radius: 12px;
+        border: 2px solid #8fa3ff;
+        font: 600 1rem Nunito;
+        color: var(--ink);
+        min-height: 46px;
+      }
+      #promise {
+        margin-top: 1.2rem;
+        font-family: Caveat;
+        font-size: 1.8rem;
+        min-height: 2rem;
+        line-height: 1.3;
+      }
+      #wa {
+        display: inline-block;
+        margin-top: 0.8rem;
+        font: 600 1rem Nunito;
+        color: #fff;
+        background: #25d366;
+        padding: 0.7rem 1.2rem;
+        border-radius: 30px;
+        text-decoration: none;
+      }
+      /* end */
+      #end {
+        max-width: none;
+        background: linear-gradient(#eef0ff, #ffe9a3 40%, #9fb2ff 80%, #4a5fc7);
+        text-align: center;
+        padding-bottom: 7rem;
+        overflow: hidden;
+      }
+      #end p {
+        font-family: Caveat;
+        font-size: clamp(1.5rem, 5vw, 2.2rem);
+        line-height: 1.5;
+        max-width: 640px;
+        margin: auto;
+      }
+      .peek {
+        position: absolute;
+        right: 6%;
+        bottom: 60px;
+        font-size: 3.2rem;
+        animation: peek 4s ease-in-out infinite;
+        z-index: 5;
+      }
+      @keyframes peek {
+        0%,
+        100% {
+          transform: translateY(30px);
+        }
+        40%,
+        60% {
+          transform: translateY(0);
+        }
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+        place-items: center;
+        background: rgba(20, 26, 77, 0.7);
+        padding: 1rem;
+      }
+      .modal.show {
+        display: grid;
+      }
+      .modal .card {
+        max-width: 520px;
+        max-height: 90vh;
+        overflow: auto;
+        padding: 2rem;
+        text-align: center;
+        font-family: Caveat;
+        font-size: 1.6rem;
+        line-height: 1.5;
+        animation: pop 0.5s;
+      }
+      .modal img {
+        max-width: 92vw;
+        max-height: 88vh;
+        border-radius: 8px;
+      }
+      /* cats */
       .roam {
         position: fixed;
         bottom: 4px;
         left: -120px;
         z-index: 40;
-        font-size: 2.6rem;
+        font-size: 2.4rem;
         cursor: pointer;
         animation: walk var(--t, 30s) linear var(--dl, 0s) infinite;
       }
@@ -676,7 +833,7 @@
         animation: step 0.5s ease-in-out infinite;
       }
       .roam img {
-        height: 64px;
+        height: 60px;
         display: block;
       }
       .roam.rev {
@@ -698,9 +855,6 @@
           transform: translateX(0);
         }
       }
-      .roam.rev {
-        left: -120px;
-      }
       @keyframes step {
         50% {
           transform: translateY(-7px) rotate(4deg);
@@ -718,23 +872,6 @@
           transform: translateY(-40px) rotate(-10deg);
         }
       }
-      .peek {
-        position: absolute;
-        right: 6%;
-        bottom: -6px;
-        font-size: 3.2rem;
-        animation: peek 4s ease-in-out infinite;
-      }
-      @keyframes peek {
-        0%,
-        100% {
-          transform: translateY(30px);
-        }
-        40%,
-        60% {
-          transform: translateY(0);
-        }
-      }
       .meow {
         position: fixed;
         z-index: 70;
@@ -748,41 +885,34 @@
         pointer-events: none;
         animation: pop 0.4s;
       }
-      #wa {
-        display: inline-block;
-        margin-top: 0.8rem;
-        font: 600 1rem Nunito;
-        color: #fff;
-        background: #25d366;
-        padding: 0.6rem 1.2rem;
-        border-radius: 30px;
-        text-decoration: none;
-      }
-      @media (max-width: 900px) {
-        section {
-          padding: 3.5rem 1rem;
+      /* responsive */
+      @media (max-width: 800px) {
+        .himal,
+        .trek {
+          grid-template-columns: 1fr;
         }
-        .route .photo {
-          flex-basis: 32%;
+        .himal blockquote {
+          text-align: center;
         }
-        .step {
-          flex-basis: 190px;
+        .trek h2 {
+          text-align: center !important;
+        }
+        .trek div[data-aos] {
+          text-align: center;
         }
       }
       @media (max-width: 700px) {
         nav {
-          padding: 0.6rem 1rem;
+          padding: 0.55rem 1rem;
         }
-        nav b {
-          font-size: 1.4rem;
+        nav a {
+          display: none;
         }
         #hero {
-          padding: 5.5rem 1rem 15rem;
-        }
-        #hero h1 {
-          font-size: 2rem;
+          padding: 5.5rem 1rem 8rem;
         }
         #player {
+          display: flex;
           width: 100%;
         }
         .route {
@@ -790,8 +920,8 @@
           align-items: center;
         }
         .route .photo {
-          flex-basis: auto;
-          width: 75%;
+          flex: none;
+          width: 80%;
         }
         .path {
           width: 3px;
@@ -811,56 +941,53 @@
             top: calc(100% - 1.6rem);
           }
         }
-        .trek h2 {
-          text-align: center !important;
-        }
-        .big {
-          max-width: 92%;
-        }
         .opts .chip {
-          flex: 1 1 40%;
+          flex: 1 1 42%;
         }
         #when {
           width: 100%;
           margin-bottom: 0.6rem;
         }
+        #save {
+          width: 100%;
+          margin: 0 !important;
+        }
         .roam {
-          font-size: 2rem;
+          font-size: 1.9rem;
+        }
+        .roam img {
+          height: 46px;
         }
         .modal .card {
           font-size: 1.35rem;
           padding: 1.4rem;
         }
+        .peek {
+          font-size: 2.4rem;
+        }
       }
-      @media (max-width: 420px) {
+      @media (max-width: 480px) {
         .favs {
           grid-template-columns: 1fr 1fr;
         }
         .chip {
-          font-size: 0.9rem;
+          font-size: 0.92rem;
           padding: 0.6rem 0.9rem;
+        }
+        .photo {
+          padding: 8px 8px 34px;
+        }
+        .photo .cap {
+          font-size: 1.15rem;
         }
         .slide {
           padding: 1.8rem 1.1rem;
         }
-      }
-      @media (max-width: 700px) {
-        #hero {
-          padding-bottom: 16rem;
+        .himal blockquote {
+          font-size: 1.6rem;
         }
-      }
-      @media (max-width: 700px) {
-        nav a {
-          display: none;
-        }
-        .himal,
-        .trek {
-          grid-template-columns: 1fr;
-        }
-        .moon {
-          right: 6%;
-          width: 70px;
-          height: 70px;
+        .trek p {
+          font-size: 1.4rem;
         }
       }
       @media (prefers-reduced-motion: reduce) {
@@ -869,89 +996,31 @@
           transition: none !important;
         }
       }
-
-      /* ===== FIXES: full images, bigger on hover, responsive ===== */
-      img {
-        max-width: 100%;
-      }
-      .photo figure {
-        aspect-ratio: auto !important;
-        min-height: 150px;
-      }
-      .photo img {
-        height: auto !important;
-        max-height: 72vh;
-        object-fit: contain !important;
-        margin: auto;
-      }
-      .fav .photo figure {
-        min-height: 110px;
-      }
-      .big {
-        max-width: min(420px, 92%);
-      }
-      .big figure {
-        min-height: 260px;
-      }
-      .photo {
-        cursor: zoom-in;
-        transition:
-          transform 0.35s,
-          box-shadow 0.35s;
-      }
-      .fav .photo {
-        cursor: pointer;
-      }
-      @media (hover: hover) {
-        .photo:hover {
-          transform: rotate(0) scale(1.18) !important;
-          z-index: 30;
-          box-shadow: 0 22px 46px rgba(43, 58, 143, 0.35);
-        }
-        .fav .photo:hover {
-          transform: scale(1.1) !important;
-        }
-        .big:hover {
-          transform: scale(1.05) !important;
-        }
-      }
-      .line {
-        padding: 2.6rem 1rem;
-      }
-      @media (max-width: 800px) {
-        .himal,
-        .trek {
-          grid-template-columns: 1fr;
-        }
-        .himal blockquote {
-          text-align: center;
-        }
-        .step {
-          flex-basis: 170px;
-        }
-      }
-      @media (max-width: 480px) {
-        section {
-          padding: 3rem 0.8rem;
-        }
-        .photo {
-          padding: 8px 8px 34px;
-        }
-        .photo .cap {
-          font-size: 1.1rem;
-        }
-        .route .photo {
-          width: 88%;
-        }
-        .step {
-          flex-basis: 155px;
-        }
-      }
     </style>
   </head>
   <body>
     <div id="bar"></div>
     <canvas id="fx"></canvas>
+
+    <div class="bf" style="left: 5%; top: 15%; --t: 24s; --h: 0deg">
+      <span>🦋</span>
+    </div>
+    <div class="bf" style="right: 5%; top: 30%; --p: fb; --t: 28s; --h: 120deg">
+      <span>🦋</span>
+    </div>
+    <div class="bf" style="left: 20%; top: 55%; --p: fc; --t: 20s; --h: 200deg">
+      <span>🦋</span>
+    </div>
+    <div
+      class="bf"
+      style="right: 15%; top: 70%; --p: fa; --t: 32s; --h: 300deg"
+    >
+      <span>🦋</span>
+    </div>
+    <div class="bf" style="left: 45%; top: 8%; --p: fc; --t: 26s; --h: 60deg">
+      <span>🦋</span>
+    </div>
+
     <div class="roam" data-gif="cat1.gif" style="--t: 34s">
       <span class="c">🐈</span>
     </div>
@@ -972,6 +1041,7 @@
     <div class="roam rev" data-gif="cat4.gif" style="--t: 70s; --dl: 20s">
       <span class="c">🐈‍⬛</span>
     </div>
+
     <nav>
       <b>For Sangeetha ♡</b><a href="#hero">Home</a
       ><a href="#about">Her Favorites</a><a href="#journey">Our Story</a
@@ -998,17 +1068,21 @@
         <audio id="song" src="music.mp3" loop></audio>
       </div>
       <!-- <img class="couple-img" src="img0.jpeg" alt="" onerror="this.remove()" /> -->
+      <div class="field">
+        <span>🌻</span><span>🌼</span><span>🌻</span><span>🌼</span
+        ><span>🌻</span><span>🌼</span><span>🌻</span>
+      </div>
       <div class="fade"></div>
     </header>
 
     <section id="about">
-      <h2 data-aos="fade-up">About Sangeetha (Aade) ♡</h2>
-      <div
-        class="photo"
-        data-aos="zoom-in"
-        style="max-width: 260px; margin: 0 auto 1.5rem"
+      <span class="sf" style="left: 2%; top: 1rem">🌻</span
+      ><span class="sf" style="right: 2%; top: 2rem; animation-delay: -2s"
+        >🌻</span
       >
-        <figure style="aspect-ratio: 3/4">
+      <h2 data-aos="fade-up">About Sangeetha (Aade) ♡</h2>
+      <div class="photo portrait" data-aos="zoom-in">
+        <figure>
           <img
             src="img0.jpeg"
             alt="Sangeetha Roka Magar"
@@ -1021,7 +1095,7 @@
         A girl with the kindest heart and the most beautiful soul… Tap her
         favorite things!
       </p>
-      <div class="favs" style="margin-top: 2rem">
+      <div class="favs" style="margin-top: 1.6rem">
         <div
           class="fav"
           data-aos="zoom-in"
@@ -1061,7 +1135,7 @@
             </figure>
           </div>
           <h3>Sunflower</h3>
-          <small>🌸 Graceful &amp; pure</small>
+          <small>🌻 Graceful &amp; pure</small>
         </div>
         <div
           class="fav"
@@ -1078,7 +1152,7 @@
           <small>🐱 Meow &amp; Meow</small>
         </div>
       </div>
-      <div class="bubble" id="say" style="margin-top: 1.5rem">
+      <div class="bubble" id="say" style="margin-top: 1.4rem">
         Tap a favorite ♡
       </div>
       <div class="cat" id="cat" title="Pet the cat">🐱</div>
@@ -1091,7 +1165,7 @@
 
     <section id="talents">
       <h2 data-aos="fade-up">Aade, you're so talented ✨</h2>
-      <p class="praise" data-aos="fade-up" style="margin-bottom: 1.5rem">
+      <p class="praise" data-aos="fade-up" style="margin: 0 auto 1.4rem">
         I have never met a girl like you. Tap each one!
       </p>
       <div class="chips" data-aos="fade-up">
@@ -1147,7 +1221,7 @@
           📏 5 ft small kiddo
         </button>
       </div>
-      <div class="bubble" id="tsay" style="margin-top: 1.4rem">
+      <div class="bubble" id="tsay" style="margin-top: 1.3rem">
         Tap a talent ♡
       </div>
     </section>
@@ -1169,9 +1243,10 @@
     </section>
 
     <section id="journey">
+      <span class="sf" style="right: 3%; top: 1rem">🌻</span>
       <h2 data-aos="fade-up">Our Journey ♡</h2>
-      <div class="line">
-        <div class="step" data-aos="fade-left">
+      <div class="car" id="car" data-aos="fade-up">
+        <div class="cs on">
           <div class="photo">
             <figure>
               <img src="tiktok.jpeg" alt="" onerror="this.remove()" />
@@ -1181,8 +1256,8 @@
           <p class="hand">This date…</p>
           <p>You followed me on TikTok &amp; Snapchat. (4 years ago)</p>
         </div>
-        <div class="step" data-aos="fade-left" data-aos-delay="100">
-          <div class="photo">
+        <div class="cs">
+          <div class="photo" style="--r: 2deg">
             <figure>
               <img src="distance.jpeg" alt="" onerror="this.remove()" />
             </figure>
@@ -1193,7 +1268,7 @@
             1 year apart — then we met face to face in India, on August 8 or 9.
           </p>
         </div>
-        <div class="step" data-aos="fade-left" data-aos-delay="200">
+        <div class="cs">
           <div class="photo">
             <figure>
               <img src="togeher.jpeg" alt="" onerror="this.remove()" />
@@ -1203,8 +1278,8 @@
           <p class="hand">College</p>
           <p>We started our college together.</p>
         </div>
-        <div class="step" data-aos="fade-left" data-aos-delay="300">
-          <div class="photo">
+        <div class="cs">
+          <div class="photo" style="--r: 2deg">
             <figure>
               <img src="img7.jpeg" alt="" onerror="this.remove()" />
             </figure>
@@ -1213,7 +1288,7 @@
           <p class="hand">Winners!</p>
           <p>And even won a trophy together!</p>
         </div>
-        <div class="step" data-aos="fade-left" data-aos-delay="400">
+        <div class="cs">
           <div class="photo">
             <figure>
               <img src="img5.jpeg" alt="" onerror="this.remove()" />
@@ -1222,6 +1297,11 @@
           </div>
           <p class="hand">3 years together</p>
           <p>Three beautiful years in India.</p>
+        </div>
+        <div class="cnav">
+          <button class="btn sm" id="cprev" aria-label="Previous">‹ Back</button
+          ><button class="btn sm" id="cnext">Next ♡</button>
+          <div class="dots" id="cdots"></div>
         </div>
       </div>
       <h2 style="margin-top: 3rem" data-aos="fade-up">Bangalore ♡ Nepal</h2>
@@ -1234,9 +1314,7 @@
         </div>
         <div class="path"><span>💙</span></div>
         <div class="photo" style="--r: 2deg">
-          <figure>
-            <img src="ktm.webp" alt="" onerror="this.remove()" />
-          </figure>
+          <figure><img src="ktm.webp" alt="" onerror="this.remove()" /></figure>
           <span class="cap">Kathmandu</span>
         </div>
       </div>
@@ -1280,7 +1358,7 @@
 
     <section id="gallery">
       <h2 data-aos="fade-up">Our Gallery ♡ Surprise!</h2>
-      <p class="praise" style="margin: 0 auto 1.5rem">
+      <p class="praise" style="margin: 0 auto 1.4rem">
         Click next, dear… one memory at a time.
       </p>
       <div class="photo big" id="gbox">
@@ -1315,7 +1393,7 @@
       <div id="promise"></div>
     </section>
 
-    <section id="end" style="max-width: none; position: relative">
+    <section id="end" style="position: relative">
       <span class="peek">🐱</span>
       <h2 data-aos="fade-up">Thank you for being part of my life, Aade ♡</h2>
       <p data-aos="fade-up">
@@ -1323,6 +1401,10 @@
         waiting for you. Because I love you. Today, tomorrow, and always. ♡
       </p>
       <button class="btn" id="come">Come back soon ♡</button>
+      <div class="field">
+        <span>🌻</span><span>🌼</span><span>🌻</span><span>🌼</span
+        ><span>🌻</span><span>🌼</span><span>🌻</span>
+      </div>
     </section>
 
     <div class="modal" id="letter">
@@ -1351,8 +1433,27 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 900, once: true });
-      // floating hearts & stars
-      const cv = document.getElementById("fx"),
+      /* ===== SETTINGS ===== */
+      const CONFIG = { KEY: "YOUR_WEB3FORMS_KEY", WA: "977XXXXXXXXXX" };
+      /* ===== SURPRISE GALLERY: CHANGE YOUR PHOTOS HERE (names without extension) ===== */
+      const SURPRISE = [
+        { img: "img4", cap: "Our first memory ♡" },
+        { img: "you", cap: "You, being you ✨" },
+        { img: "advp", cap: "Adventure partners" },
+        { img: "smile", cap: "Your beautiful smile" },
+        { img: "home", cap: "Me + you = home" },
+        { img: "fav", cap: "Another favorite day" },
+        { img: "kiddo", cap: "Cutie kiddo 5 ft 😂" },
+        { img: "adv", cap: "Mountains with you" },
+        { img: "dancee", cap: "Dance partners 💃" },
+        { img: "days", cap: "Chandigarh days" },
+        { img: "img2", cap: "Together, always" },
+        { img: "img8", cap: "And many more to come ♡" },
+      ];
+      /* ===== END SETTINGS ===== */
+      const $ = (id) => document.getElementById(id);
+      // hearts, stars & paws canvas
+      const cv = $("fx"),
         cx = cv.getContext("2d");
       let P = [];
       function size() {
@@ -1375,6 +1476,20 @@
         });
       }
       setInterval(() => spawn(), 700);
+      setInterval(() => {
+        if (P.length < 80)
+          P.push({
+            x: Math.random() * cv.width,
+            y: cv.height,
+            vx: 0,
+            vy: -0.6,
+            s: 16,
+            a: 0.5,
+            c: "#8fa3ff",
+            ch: "🐾",
+            b: false,
+          });
+      }, 2500);
       (function loop() {
         cx.clearRect(0, 0, cv.width, cv.height);
         P = P.filter((p) => p.a > 0 && p.y > -30);
@@ -1392,12 +1507,24 @@
         }
         requestAnimationFrame(loop);
       })();
+      const burst = (n = 8) => {
+        for (let k = 0; k < n; k++)
+          spawn(innerWidth / 2, innerHeight / 2, true);
+      };
       addEventListener("click", (e) => {
         for (let i = 0; i < 6; i++) spawn(e.clientX, e.clientY, true);
       });
+      let lt = 0;
+      addEventListener("pointermove", (e) => {
+        const n = Date.now();
+        if (n - lt > 90) {
+          lt = n;
+          spawn(e.clientX, e.clientY, false);
+        }
+      });
       // music
-      const song = document.getElementById("song"),
-        play = document.getElementById("play");
+      const song = $("song"),
+        play = $("play");
       play.onclick = () => {
         if (song.paused) {
           song.play().catch(() => alert("Add music.mp3 next to index.html"));
@@ -1408,11 +1535,10 @@
         }
       };
       // favorites + cat
-      const say = document.getElementById("say");
       document.querySelectorAll(".fav").forEach(
         (f) =>
           (f.onclick = () => {
-            say.innerHTML = f.dataset.say;
+            $("say").innerHTML = f.dataset.say;
           }),
       );
       const meows = [
@@ -1422,10 +1548,43 @@
         "Cats &amp; her = best duo 🐱",
       ];
       let mi = 0;
-      document.getElementById("cat").onclick = () => {
-        document.getElementById("catsay").innerHTML =
-          meows[mi++ % meows.length];
+      $("cat").onclick = () => {
+        $("catsay").innerHTML = meows[mi++ % meows.length];
       };
+      document.querySelectorAll(".chip[data-t]").forEach(
+        (c) =>
+          (c.onclick = () => {
+            $("tsay").textContent = c.dataset.t;
+            burst(8);
+          }),
+      );
+      // journey carousel
+      const cs = [...document.querySelectorAll(".cs")];
+      let ci2 = 0;
+      function showC(n) {
+        ci2 = (n + cs.length) % cs.length;
+        cs.forEach((s, k) => s.classList.toggle("on", k === ci2));
+        $("cdots").textContent = cs
+          .map((_, k) => (k === ci2 ? "♥" : "♡"))
+          .join(" ");
+        $("cnext").textContent =
+          ci2 === cs.length - 1 ? "Start again ♡" : "Next ♡";
+      }
+      $("cnext").onclick = () => {
+        showC(ci2 + 1);
+        burst(5);
+      };
+      $("cprev").onclick = () => showC(ci2 - 1);
+      let tx = 0;
+      const car = $("car");
+      car.addEventListener("touchstart", (e) => (tx = e.touches[0].clientX), {
+        passive: true,
+      });
+      car.addEventListener("touchend", (e) => {
+        const d = e.changedTouches[0].clientX - tx;
+        if (Math.abs(d) > 50) showC(ci2 + (d < 0 ? 1 : -1));
+      });
+      showC(0);
       // story
       const S = [
         [
@@ -1474,9 +1633,9 @@
         ],
       ];
       let i = 0;
-      const sl = document.getElementById("slide"),
-        dt = document.getElementById("dots"),
-        nx = document.getElementById("next");
+      const sl = $("slide"),
+        dt = $("dots"),
+        nx = $("next");
       function show() {
         sl.classList.remove("swap");
         void sl.offsetWidth;
@@ -1494,69 +1653,64 @@
         .querySelectorAll(".note li")
         .forEach((l) => (l.onclick = () => l.classList.toggle("on")));
       // stars
-      const st = document.getElementById("stars");
+      const st = $("stars");
       for (let k = 0; k < 90; k++) {
         const d = document.createElement("i");
         d.className = "star";
         d.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 70}%;animation-delay:${Math.random() * 3}s`;
         st.appendChild(d);
       }
-      // talents
-      document.querySelectorAll(".chip[data-t]").forEach(
-        (c) =>
-          (c.onclick = () => {
-            document.getElementById("tsay").textContent = c.dataset.t;
-            for (let k = 0; k < 8; k++)
-              spawn(innerWidth / 2, innerHeight / 2, true);
-          }),
-      );
       // surprise gallery
-      const G = [
-        "Our first memory ♡",
-        "You, being you ✨",
-        "Adventure partners",
-        "Your beautiful smile",
-        "Me + you = home",
-        "Another favorite day",
-        "Cutie kiddo 5 ft 😂",
-        "Mountains with you",
-        "Dance partners 💃",
-        "Chandigarh days",
-        "Together, always",
-        "And many more to come ♡",
-      ];
+      const EXTS = ["jpeg", "jpg", "png", "webp", "gif"];
+      const gimg = $("gimg"),
+        gc = $("gcap"),
+        gift = $("gift"),
+        cnt = $("gcount"),
+        gn = $("gnext");
       let gi = -1;
-      const gimg = document.getElementById("gimg"),
-        gc = document.getElementById("gcap"),
-        gift = document.getElementById("gift"),
-        cnt = document.getElementById("gcount"),
-        gn = document.getElementById("gnext");
-      gimg.onload = () => (gimg.style.display = "block");
-      gimg.onerror = () => (gimg.style.display = "none");
-      gn.onclick = () => {
-        gi = (gi + 1) % G.length;
-        gift.style.display = "none";
+      function loadSurprise(name) {
+        let k = 0;
         gimg.style.display = "none";
-        gimg.src = "img" + (14 + gi) + ".png";
-        gc.textContent = G[gi];
-        cnt.textContent = gi + 1 + " / " + G.length;
+        gimg.onload = () => (gimg.style.display = "block");
+        gimg.onerror = () => {
+          k++;
+          if (k < EXTS.length) gimg.src = name + "." + EXTS[k];
+          else gimg.style.display = "none";
+        };
+        gimg.src = name + "." + EXTS[0];
+      }
+      gn.onclick = () => {
+        gi = (gi + 1) % SURPRISE.length;
+        gift.style.display = "none";
+        loadSurprise(SURPRISE[gi].img);
+        gc.textContent = SURPRISE[gi].cap;
+        cnt.textContent = gi + 1 + " / " + SURPRISE.length;
         gn.textContent =
-          gi == G.length - 1 ? "Start again ♡" : "Click next, dear ♡";
-        document.getElementById("gbox").animate(
+          gi == SURPRISE.length - 1 ? "Start again ♡" : "Click next, dear ♡";
+        $("gbox").animate(
           [
             { transform: "scale(.9) rotate(-4deg)", opacity: 0 },
             { transform: "scale(1) rotate(0)", opacity: 1 },
           ],
           { duration: 450 },
         );
-        for (let k = 0; k < 10; k++)
-          spawn(innerWidth / 2, innerHeight / 2, true);
+        burst(10);
       };
-      // ===== SETTINGS: fill these two =====
-      const CONFIG = { KEY: "YOUR_WEB3FORMS_KEY", WA: "977XXXXXXXXXX" };
-      // return date
-      const pr = document.getElementById("promise"),
-        wh = document.getElementById("when");
+      // tap photo = full size
+      const lb = $("lb");
+      lb.onclick = () => lb.classList.remove("show");
+      document.addEventListener("click", (e) => {
+        const ph = e.target.closest(".photo");
+        if (!ph || ph.closest(".fav")) return;
+        const im = ph.querySelector("img");
+        if (im && im.style.display !== "none" && im.naturalWidth) {
+          lb.querySelector("img").src = im.src;
+          lb.classList.add("show");
+        }
+      });
+      // return date + notify
+      const pr = $("promise"),
+        wh = $("when");
       async function notify(txt) {
         if (CONFIG.KEY.startsWith("YOUR")) return false;
         try {
@@ -1622,7 +1776,7 @@
             setP(wh.value, true, c.textContent + " (" + t.toDateString() + ")");
           }),
       );
-      document.getElementById("save").onclick = () => {
+      $("save").onclick = () => {
         if (wh.value) setP(wh.value, true);
       };
       try {
@@ -1632,7 +1786,7 @@
           setP(v, false);
         }
       } catch (e) {}
-      // ===== extra animation =====
+      // hero animation
       const h1 = document.querySelector("#hero h1");
       h1.innerHTML = h1.innerHTML
         .split("<br>")
@@ -1641,31 +1795,20 @@
             `<span class="line-in" style="animation-delay:${0.3 + k * 0.45}s">${l}</span>`,
         )
         .join("");
-      const bar = document.getElementById("bar"),
-        moon = document.querySelector(".moon"),
-        ci = document.querySelector(".img1");
+      const bar = $("bar"),
+        moon = document.querySelector(".moon");
       addEventListener(
         "scroll",
         () => {
           const y = scrollY;
           bar.style.width =
             (y / (document.body.scrollHeight - innerHeight)) * 100 + "%";
-          if (y < innerHeight * 1.2) {
+          if (y < innerHeight * 1.2)
             moon.style.transform = `translateY(${y * 0.3}px)`;
-            if (ci) ci.style.marginBottom = -y * 0.12 + "px";
-          }
         },
         { passive: true },
       );
-      let lt = 0;
-      addEventListener("pointermove", (e) => {
-        const n = Date.now();
-        if (n - lt > 90) {
-          lt = n;
-          spawn(e.clientX, e.clientY, false);
-        }
-      });
-      // cats: use catN.gif if present
+      // cats (uses catN.gif if present)
       const says = [
         "Meow ♡",
         "Mrrp!",
@@ -1687,104 +1830,22 @@
           m.className = "meow";
           m.textContent = says[(Math.random() * says.length) | 0];
           const r = el.getBoundingClientRect();
-          m.style.left = r.left + "px";
+          m.style.left = Math.max(8, r.left) + "px";
           m.style.top = r.top - 40 + "px";
           document.body.appendChild(m);
           setTimeout(() => m.remove(), 1400);
           for (let k = 0; k < 6; k++) spawn(r.left + 20, r.top, true);
         };
       });
-      setInterval(() => {
-        if (P.length < 80) {
-          const x = Math.random() * cv.width;
-          P.push({
-            x,
-            y: cv.height,
-            vx: 0,
-            vy: -0.6,
-            s: 16,
-            a: 0.5,
-            c: "#8fa3ff",
-            ch: "🐾",
-            b: false,
-          });
-        }
-      }, 2500);
       // come back
-      document.getElementById("come").onclick = (e) => {
+      $("come").onclick = () => {
         for (let k = 0; k < 60; k++)
           setTimeout(
             () => spawn(innerWidth / 2, innerHeight / 2, true),
             k * 15,
           );
-        document.getElementById("letter").classList.add("show");
+        $("letter").classList.add("show");
       };
-    </script>
-
-    <script>
-      /* ===== SURPRISE GALLERY: CHANGE YOUR PHOTOS HERE ===== */
-      /* Save your photos with these names next to index.html.
-   Write the name WITHOUT the extension. The page finds .jpeg, .jpg, .png, .webp or .gif by itself.
-   Change the captions (cap) to whatever you like. */
-      const SURPRISE = [
-        { img: "img4", cap: "Our first memory ♡" },
-        { img: "you", cap: "You, being you ✨" },
-        { img: "advp", cap: "Adventure partners" },
-        { img: "smile", cap: "Your beautiful smile" },
-        { img: "home", cap: "Me + you = home" },
-        { img: "fav", cap: "Another favorite day" },
-        { img: "kiddo", cap: "Cutie kiddo 5 ft 😂" },
-        { img: "adv", cap: "Mountains with you" },
-        { img: "dancee", cap: "Dance partners 💃" },
-        { img: "days", cap: "Chandigarh days" },
-        { img: "img2", cap: "Together, always" },
-        { img: "img8", cap: "And many more to come ♡" },
-      ];
-      /* ===== END OF SETTINGS ===== */
-
-      const EXTS = ["jpeg", "jpg", "png", "webp", "gif"];
-      function loadSurprise(name) {
-        let k = 0;
-        gimg.style.display = "none";
-        gimg.onload = () => (gimg.style.display = "block");
-        gimg.onerror = () => {
-          k++;
-          if (k < EXTS.length) gimg.src = name + "." + EXTS[k];
-          else gimg.style.display = "none";
-        };
-        gimg.src = name + "." + EXTS[0];
-      }
-      gi = -1;
-      gn.onclick = () => {
-        gi = (gi + 1) % SURPRISE.length;
-        gift.style.display = "none";
-        loadSurprise(SURPRISE[gi].img);
-        gc.textContent = SURPRISE[gi].cap;
-        cnt.textContent = gi + 1 + " / " + SURPRISE.length;
-        gn.textContent =
-          gi == SURPRISE.length - 1 ? "Start again ♡" : "Click next, dear ♡";
-        document.getElementById("gbox").animate(
-          [
-            { transform: "scale(.9) rotate(-4deg)", opacity: 0 },
-            { transform: "scale(1) rotate(0)", opacity: 1 },
-          ],
-          { duration: 450 },
-        );
-        for (let k = 0; k < 10; k++)
-          spawn(innerWidth / 2, innerHeight / 2, true);
-      };
-
-      /* tap any photo to see it full size */
-      lb.onclick = () => lb.classList.remove("show");
-      document.addEventListener("click", (e) => {
-        const ph = e.target.closest(".photo");
-        if (!ph || ph.closest(".fav")) return;
-        const im = ph.querySelector("img");
-        if (im && im.style.display !== "none" && im.naturalWidth) {
-          lb.querySelector("img").src = im.src;
-          lb.classList.add("show");
-        }
-      });
     </script>
   </body>
 </html>
